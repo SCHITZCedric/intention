@@ -43,7 +43,7 @@
             <th scope="col"> <a>Date célébrée</a> </th>
             <th scope="col"> <a>Célébrant</a> </th>
             <th scope="col"> <a>Clocher</a> </th>
-            <th scope="col"> <a>Payer l'intention</a> </th>
+            <th scope="col"> <a>Reglement à recevoir</a> </th>
 
         </tr>
         </thead>

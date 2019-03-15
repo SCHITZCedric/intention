@@ -40,7 +40,7 @@
     <br>
 </div>
 
-<div class="container">
+
   <div class="col-sm-9">
 <div class="row filter_data">
   <table class="table table-hover">
@@ -67,6 +67,12 @@
               <a href="javascript:ajaxLoad('{{url('intentions/?field=casuel&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Casuel</a>
               {{request()->session()->get('field')=='casuel'?(request()->session()->get('sort')=='asc'?'':''):''}}
           </th>
+
+          <th scope="col">
+              <a href="javascript:ajaxLoad('{{url('intentions/?field=personne_demandeuse&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Personne demandeuse</a>
+              {{request()->session()->get('field')=='personne_demandeuse'?(request()->session()->get('sort')=='asc'?'':''):''}}
+          </th>
+
           <th scope="col">
               <a href="javascript:ajaxLoad('{{url('intentions/?field=intention&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Intention</a>
               {{request()->session()->get('field')=='intention'?(request()->session()->get('sort')=='asc'?'':''):''}}
@@ -90,6 +96,10 @@
           <th scope="col">
               <a href="javascript:ajaxLoad('{{url('intentions/?field=id_clochers&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Clocher</a>
               {{request()->session()->get('field')=='id_clochers'?(request()->session()->get('sort')=='asc'?'':''):''}}
+          </th>
+          <th scope="col">
+            <a href="javascript:ajaxLoad('{{url('intentions/?field=commentaire&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Commentaire</a>
+            {{request()->session()->get('field')=='commentaire'?(request()->session()->get('sort')=='asc'?'':''):''}}
           </th>
           <th scope="col">
             <a href="javascript:ajaxLoad('{{url('intentions/?field=updated_at&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Modifié le</a>
@@ -119,6 +129,7 @@
            <td> {{ $intention->encaissement }} </td>
            <td> {{ $intention->surplus }} </td>
            <td> {{ $intention->casuel }} </td>
+           <td> {{ $intention->personne_demandeuse }} </td>
            <td> {{ $intention->intention }} </td>
            <td> {{ ($intention->date_souhaitee ? date('d/m/Y', strtotime($intention->date_souhaitee)) : '') }} </td>
            <td> {{ ($intention->date_annoncee ? date('d/m/Y', strtotime($intention->date_annoncee)) : '') }} </td>
@@ -135,6 +146,7 @@
            <td>{{ $intention->paroisses->nom }}</td>
            @endif
            @endif
+           <td> {{ $intention->commentaire }} </td>
            <td> {{ $intention->updated_at }} </td>
       <td>
           <div class="btn-group btn-group-sm" role="group">

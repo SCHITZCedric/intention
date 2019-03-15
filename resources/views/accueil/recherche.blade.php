@@ -84,7 +84,7 @@
                 <div class="col-md-8">
                     <select class="form-control" name="casuel">
                         <option selected value="">Choisir un type d'intention</option>
-                        <option value="Intention"> Intention </option>
+                        <option value="Eucharistie"> Eucharistie </option>
                         <option value="Mariage"> Mariage </option>
                         <option value="Obsèque"> Obsèque </option>
                     </select>

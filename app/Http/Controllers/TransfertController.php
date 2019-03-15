@@ -76,7 +76,7 @@ class TransfertController extends Controller
 
 
 
-                                      ->orderBy('created_at')
+                                      ->orderBy('created_at', 'ASC')
                                       ->get();
 
     return view('transfert.form', ['transfertCelebrants' => $intentionList ]);
