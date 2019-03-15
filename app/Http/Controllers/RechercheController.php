@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Intention;
+
+class RechercheController extends Controller
+{
+  public function filter(Request $request)
+  {
+    $filterIntention = new Intention();
+
+
+      if ($request->date_annoncee != null) {
+
+        $paroisse = $filterIntention->where('date_annoncee', '=', $request->date_annoncee)
+                                    ->get();
+
+                                        return view('filterIntention.ajax', compact('paroisse'));
+      }
+
+      if ($request->from_date && $request->to_date != null) {
+
+        $paroisse = $filterIntention->whereBetween('date_celebree', [$request->from_date, $request->to_date])
+                                      ->orderBy('date_celebree')
+                                      ->get();
+
+                                        return view('filterIntention.ajax', compact('paroisse'));
+
+
+      }
+
+      if ($request->id_celebrants != null) {
+
+        $paroisse = $filterIntention->where('id_celebrants', '=', $request->id_celebrants)
+                                    ->get();
+
+                                        return view('filterIntention.ajax', compact('paroisse'));
+      }
+
+      if ($request->id_clochers != null) {
+
+        $paroisse = $filterIntention->where('id_clochers', '=', $request->id_clochers)
+                                    ->get();
+
+                                        return view('filterIntention.ajax', compact('paroisse'));
+      }
+
+
+  }
+}
+?>
