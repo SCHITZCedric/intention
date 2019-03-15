@@ -52,7 +52,7 @@
             <td> {{ $regler->statuts->statut }} </td>
             <td>
                 <div class="btn-group btn-group-sm" role="group">
-                <a class="btn btn-success" title="Regler" href="javascript:ajaxLoad('{{url('regler/update/'.$regler->id)}}')">Célébrer une intention à {{$regler->nom}} {{$regler->prenom}}</a>
+                <a class="btn btn-primary" title="Regler" href="javascript:ajaxLoad('{{url('regler/update/'.$regler->id)}}')">Célébrer une intention à {{$regler->nom}} {{$regler->prenom}}</a>
                 </div>
             </td>
         </tr>

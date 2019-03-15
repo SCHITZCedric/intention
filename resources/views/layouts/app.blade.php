@@ -40,9 +40,7 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                            <div class="ml-auto">
-                                <h5>  <a class="nav-link row-left" href="{{ url('/regler') }}"> Régler une intention</a> </h5>
-                            </div>
+                        
                                 <li class="nav-item dropdown">
 
                                     <h5> <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

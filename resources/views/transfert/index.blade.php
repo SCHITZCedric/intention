@@ -45,7 +45,7 @@
 
             <td>
                 <div class="btn-group btn-group-sm" role="group">
-                <a class="btn btn-success" title="Transfert" href="javascript:ajaxLoad('{{url('transfert/update/'.$trans->id)}}')">Transférer une intention à la paroisse {{$trans->nom}}</a>
+                <a class="btn btn-primary" title="Transfert" href="javascript:ajaxLoad('{{url('transfert/update/'.$trans->id)}}')">Transférer une intention à la paroisse {{$trans->nom}}</a>
                 </div>
             </td>
         </tr>
