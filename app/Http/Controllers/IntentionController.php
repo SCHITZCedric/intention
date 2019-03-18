@@ -85,9 +85,7 @@ class IntentionController extends Controller
         'intention' => 'required',
         'date_souhaitee' => 'required',
         'date_annoncee' => '',
-        'date_celebree' => '',
-        'id_clochers' => 'required',
-        'id_celebrants' => '',
+        'id_clochers' => 'required'
       ];
 
       $validator = Validator::make($request->all(), $rules);
@@ -106,6 +104,8 @@ class IntentionController extends Controller
       $intention->intention = $request->intention;
       $intention->date_souhaitee = $request->date_souhaitee;
       $intention->date_annoncee = $request->date_annoncee;
+      $intention->personne_demandeuse = $request->personne_demandeuse;
+      $intention->commentaire = $request->commentaire;
       $intention->id_clochers = $request->id_clochers;
 
       $intention->save();
@@ -150,8 +150,9 @@ class IntentionController extends Controller
       $intention->date_souhaitee = $request->date_souhaitee;
       $intention->date_annoncee = $request->date_annoncee;
       $intention->date_celebree = $request->date_celebree;
-      $intention->id_celebrants = $request->id_celebrants;
       $intention->id_clochers = $request->id_clochers;
+      $intention->id_celebrants = $request->id_celebrants;
+
       $intention->save();
 
       return response()->json([

@@ -56,7 +56,7 @@
               {{request()->session()->get('field')=='reglement'?(request()->session()->get('sort')=='asc'?'':''):''}}
           </th>
           <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=encaissement&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Encaissement</a>
+              <a href="javascript:ajaxLoad('{{url('intentions/?field=encaissement&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Offrande</a>
               {{request()->session()->get('field')=='encaissement'?(request()->session()->get('sort')=='asc'?'':''):''}}
           </th>
           <th scope="col">
@@ -69,12 +69,12 @@
           </th>
 
           <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=personne_demandeuse&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Personne demandeuse</a>
+              <a href="javascript:ajaxLoad('{{url('intentions/?field=personne_demandeuse&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Demandeur</a>
               {{request()->session()->get('field')=='personne_demandeuse'?(request()->session()->get('sort')=='asc'?'':''):''}}
           </th>
 
           <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=intention&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Intention</a>
+              <a href="javascript:ajaxLoad('{{url('intentions/?field=intention&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Intention souhaitée</a>
               {{request()->session()->get('field')=='intention'?(request()->session()->get('sort')=='asc'?'':''):''}}
           </th>
           <th scope="col">
@@ -82,11 +82,11 @@
               {{request()->session()->get('field')=='date_souhaitee'?(request()->session()->get('sort')=='asc'?'':''):''}}
           </th>
           <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=date_annoncee&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Date annoncée</a>
+              <a href="javascript:ajaxLoad('{{url('intentions/?field=date_annoncee&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Annoncée le</a>
               {{request()->session()->get('field')=='date_annoncee'?(request()->session()->get('sort')=='asc'?'':''):''}}
           </th>
           <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=date_celebree&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Date célébrée</a>
+              <a href="javascript:ajaxLoad('{{url('intentions/?field=date_celebree&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Célébrée le </a>
               {{request()->session()->get('field')=='date_celebree'?(request()->session()->get('sort')=='asc'?'':''):''}}
           </th>
           <th scope="col">

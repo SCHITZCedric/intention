@@ -12,9 +12,9 @@ class RechercheController extends Controller
     $filterIntention = new Intention();
 
 
-      if ($request->date_annoncee != null) {
+      if ($request->date_celebree != null) {
 
-        $paroisse = $filterIntention->where('date_annoncee', '=', $request->date_annoncee)
+        $paroisse = $filterIntention->where('date_celebree', '=', $request->date_celebree)
                                     ->get();
 
                                         return view('filterIntention.ajax', compact('paroisse'));
