@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Exports\IntentionsExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 use App\Intention;
 use App\Celebrant;
 use App\Paroisse;
@@ -161,6 +164,11 @@ class IntentionController extends Controller
       ]);
   }
 
+
+public function export()
+{
+  return Excel::download(new IntentionsExport, 'intentions.xlsx');
+}
 
 
 

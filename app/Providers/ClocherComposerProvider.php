@@ -29,6 +29,6 @@ class ClocherComposerProvider extends ServiceProvider
 
     public function composeListClocher()
     {
-        view()->composer(['intention.form', 'intention.index', 'intention.ajax', 'filterIntention.index', 'filterIntention.form', 'accueil.recherche', 'intention.editform', 'accueil.addintention'], 'App\Http\ViewComposers\ListClocherComposer');
+        view()->composer(['intention.form', 'intention.index', 'intention.ajax', 'filterIntention.index', 'filterIntention.form', 'accueil.recherche', 'intention.editform', 'accueil.addintention', 'accueil.export'], 'App\Http\ViewComposers\ListClocherComposer');
     }
 }

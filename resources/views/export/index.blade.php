@@ -1,4 +1,4 @@
-
+<!--
 <script src="{{ asset('/js/app.js') }}" defer></script>
 
 <div class="container">
@@ -24,7 +24,7 @@
               </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 
@@ -38,34 +38,33 @@
                 <br>
 
             <tr>
-              <th scope="col"> <a>Ajouté le</a> </th>
-              <th scope="col"> <a>Reglement</a> </th>
-              <th scope="col"> <a>Offrande</a> </th>
-              <th scope="col"> <a>Surplus</a> </th>
-              <th scope="col"> <a>Type d'intention</a> </th>
-              <th scope="col"> <a>Intention souhaitée</a> </th>
-              <th scope="col"> <a>Date souhaitée</a> </th>
-              <th scope="col"> <a>Annoncée le</a> </th>
-              <th scope="col"> <a>Célébrée le</a> </th>
-              <th scope="col"> <a>Célébrant</a> </th>
-              <th scope="col"> <a>Clocher</a> </th>
-              <th scope="col"> <a>Modifié le</a> </th>
+                <th scope="col"> <a>Ajouté le</a> </th>
+                <th scope="col"> <a>Reglement</a> </th>
+                <th scope="col"> <a>Offrande</a> </th>
+                <th scope="col"> <a>Surplus</a> </th>
+                <th scope="col"> <a>Type d'intention</a> </th>
+                <th scope="col"> <a>Intention souhaitée</a> </th>
+                <th scope="col"> <a>Date souhaitée</a> </th>
+                <th scope="col"> <a>Annoncée le</a> </th>
+                <th scope="col"> <a>Célébrée le</a> </th>
+                <th scope="col"> <a>Célébrant</a> </th>
+                <th scope="col"> <a>Clocher</a> </th>
+                <th scope="col"> <a>Modifié le</a> </th>
+                <th width="160px" style="vertical-align: middle">
+                  <a href="{{ url('/exporter/resultat/export') }}" class="btn btn-outline-primary btn-sm"> <i class="fa fa-plus" aria-hidden="true"></i> Exporter les intentions</a>
+                </th>
             </tr>
             </thead>
-      </div>
 
-  </div>
-  </div>
-</div>
 
 
 
 
 <tbody>
 
-
-<tr class="col">
 @foreach ($paroisse as $intention)
+<tr class="col">
+
          <td> {{ $intention->created_at }} </td>
          <td> {{ $intention->reglement }} </td>
          <td> {{ $intention->encaissement }} </td>
@@ -86,14 +85,6 @@
          <td> Intention transféré </td>
          @endif
          <td> {{ $intention->updated_at }} </td>
-    <td>
-        <div class="btn-group btn-group-sm" role="group">
-
-        <a class="btn btn-warning" title="Edit"
-           href="javascript:ajaxLoad('{{url('/recherche/resultat/update/'.$intention->id)}}')"> <i class="fas fa-pencil-alt"></i>
-            Modifier</a>
-        </div>
-    </td>
 </tr>
 @endforeach
 

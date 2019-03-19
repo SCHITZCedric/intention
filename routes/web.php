@@ -38,6 +38,9 @@ Route::group(['middleware' => ['auth', 'roles:Admin']], function(){
 
   });
 
+Route::get('/exporter', function () { return view('accueil.export'); });
+Route::post('/exporter/resultat', 'ExportController@export');
+Route::get('/exporter/resultat/export', 'IntentionController@export');
 
 
   Route::group(['prefix' => 'intentions'], function() {

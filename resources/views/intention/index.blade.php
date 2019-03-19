@@ -27,7 +27,7 @@
                             <div class="row-md-8 mr-md-2">
                               <!-- <a href="" class="btn btn-secondary" data-toggle="modal" data-target="#filterModal">Filtrer</a> -->
 
-                                <button type="button" role="Presentation" class="btn btn-secondary">Surplus : {{$surplusTotal}} €</button>
+
 
                             </div>
                         </div>
@@ -168,7 +168,3 @@
 
 
 </div>
-
-<ul class="pagination">
-         {{ $paroisse->links() }}
-     </ul>
