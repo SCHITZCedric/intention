@@ -6,6 +6,7 @@ use App\Intention;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class IntentionsExport implements FromView
@@ -13,12 +14,98 @@ class IntentionsExport implements FromView
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function view(Request $request): View
+    public function view(): View
     {
-        return view('export.index', [
-            'paroisse' => Intention::where('id_clochers', '=', $request->id_clochers)
-            ->get()
+                $id_clochers = request()->input('id_clochers');
+                $id_celebrants = request()->input('id_celebrants');
 
-        ]);
+                $date_celebree = request()->input('date_celebree');
+
+                $casuel = request()->input('casuel');
+                $etat = request()->input('etat');
+
+                $from_date = request()->input('from_date');
+                $to_date = request()->input('to_date');
+
+                $id_paroisse =  Auth::user()->id_paroisses;
+
+                if ($id_clochers != null) {
+
+                    return view('export.index', [
+                        'paroisse' => Intention::where('id_clochers', '=', $id_clochers)
+                        ->get()
+
+                    ]);
+
+                }
+
+                if ($id_celebrants != null) {
+
+                    return view('export.index', [
+                        'paroisse' => Intention::where('id_celebrants', '=', $id_celebrants)
+                        ->get()
+
+                    ]);
+
+                }
+
+                if ($date_celebree != null) {
+
+                    return view('export.index', [
+                        'paroisse' => Intention::where('date_celebree', '=', $date_celebree)
+                        ->get()
+
+                    ]);
+
+                }
+
+                if ($from_date && $to_date != null) {
+
+                    return view('export.index', [
+                        'paroisse' => Intention::whereBetween('date_celebree', [$from_date, $to_date])
+                        ->orderBy('date_celebree')
+                        ->get()
+
+                    ]);
+
+              }
+
+              if ($casuel != null) {
+
+                  return view('export.index', [
+                      'paroisse' => Intention::leftjoin('clochers', 'id_clochers', '=', 'clochers.id_clocher')
+                      ->where('id_paroisses', '=', $id_paroisse)
+                      ->where('casuel', '=', $casuel)
+                      ->get()
+
+                  ]);
+
+              }
+
+              if ($etat == 1) {
+
+                  return view('export.index', [
+                      'paroisse' => Intention::where('date_annoncee', '!=', null)
+                                            ->where('date_celebree', '=', null)
+                      ->get()
+
+                  ]);
+
+              }
+
+              if ($etat == 2) {
+
+                  return view('export.index', [
+                      'paroisse' => Intention::where('date_celebree', '!=', null)
+                      ->get()
+
+                  ]);
+
+              }
+
+
+
+
+
     }
 }

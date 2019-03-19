@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Default form register -->
-<form class="text-center border border-light p-5" action="{{ action ('ExportController@export')}}" method="POST">
+<form class="text-center border border-light p-5" action="{{ url('exporter/resultat/export')}}" method="POST">
 @csrf
     <p class="h4 mb-4">Vous souhaitez rechercher une intention </p>
 
@@ -100,8 +100,8 @@
 
                     <select class="form-control" name="etat">
                         <option selected value="">Choisir un état</option>
-                        <option value="Annoncée"> Annoncée </option>
-                        <option value="Célébrée"> Célébrée </option>
+                        <option value="1"> Annoncée </option>
+                        <option value="2"> Célébrée </option>
                     </select>
             </div>
         </div>
