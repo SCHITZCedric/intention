@@ -5,7 +5,7 @@
 <!-- Default form register -->
 <form class="text-center border border-light p-5" action="{{ url('exporter/resultat/export')}}" method="POST">
 @csrf
-    <p class="h4 mb-4">Vous souhaitez rechercher une intention </p>
+    <p class="h4 mb-4">Vous souhaitez exporter une ou plusieurs intention  au format Excel</p>
 
 <div class="container">
     <div class="form-row mb-4">

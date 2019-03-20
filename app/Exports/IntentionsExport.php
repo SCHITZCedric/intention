@@ -16,6 +16,7 @@ class IntentionsExport implements FromView
     */
     public function view(): View
     {
+         //TODO Développer les conditions multiple 
                 $id_clochers = request()->input('id_clochers');
                 $id_celebrants = request()->input('id_celebrants');
 
@@ -32,8 +33,10 @@ class IntentionsExport implements FromView
                 if ($id_clochers != null) {
 
                     return view('export.index', [
-                        'paroisse' => Intention::where('id_clochers', '=', $id_clochers)
-                        ->get()
+                        'paroisse' => Intention::leftjoin('clochers', 'id_clochers', '=', 'clochers.id_clocher')
+                                                ->where('id_paroisses', '=', $id_paroisse)
+                                                ->where('id_clochers', '=', $id_clochers)
+                                                ->get()
 
                     ]);
 
@@ -42,8 +45,10 @@ class IntentionsExport implements FromView
                 if ($id_celebrants != null) {
 
                     return view('export.index', [
-                        'paroisse' => Intention::where('id_celebrants', '=', $id_celebrants)
-                        ->get()
+                        'paroisse' => Intention::leftjoin('clochers', 'id_clochers', '=', 'clochers.id_clocher')
+                                                ->where('id_paroisses', '=', $id_paroisse)
+                                                ->where('id_celebrants', '=', $id_celebrants)
+                                                ->get()
 
                     ]);
 
@@ -52,8 +57,10 @@ class IntentionsExport implements FromView
                 if ($date_celebree != null) {
 
                     return view('export.index', [
-                        'paroisse' => Intention::where('date_celebree', '=', $date_celebree)
-                        ->get()
+                        'paroisse' => Intention::leftjoin('clochers', 'id_clochers', '=', 'clochers.id_clocher')
+                                                ->where('id_paroisses', '=', $id_paroisse)
+                                                ->where('date_celebree', '=', $date_celebree)
+                                                ->get()
 
                     ]);
 
@@ -62,9 +69,11 @@ class IntentionsExport implements FromView
                 if ($from_date && $to_date != null) {
 
                     return view('export.index', [
-                        'paroisse' => Intention::whereBetween('date_celebree', [$from_date, $to_date])
-                        ->orderBy('date_celebree')
-                        ->get()
+                        'paroisse' => Intention::leftjoin('clochers', 'id_clochers', '=', 'clochers.id_clocher')
+                                                ->where('id_paroisses', '=', $id_paroisse)
+                                                ->whereBetween('date_celebree', [$from_date, $to_date])
+                                                ->orderBy('date_celebree')
+                                                ->get()
 
                     ]);
 
@@ -74,9 +83,10 @@ class IntentionsExport implements FromView
 
                   return view('export.index', [
                       'paroisse' => Intention::leftjoin('clochers', 'id_clochers', '=', 'clochers.id_clocher')
-                      ->where('id_paroisses', '=', $id_paroisse)
-                      ->where('casuel', '=', $casuel)
-                      ->get()
+                                             ->where('id_paroisses', '=', $id_paroisse)
+                                             ->where('id_paroisses', '=', $id_paroisse)
+                                             ->where('casuel', '=', $casuel)
+                                             ->get()
 
                   ]);
 
@@ -85,9 +95,11 @@ class IntentionsExport implements FromView
               if ($etat == 1) {
 
                   return view('export.index', [
-                      'paroisse' => Intention::where('date_annoncee', '!=', null)
-                                            ->where('date_celebree', '=', null)
-                      ->get()
+                      'paroisse' => Intention::leftjoin('clochers', 'id_clochers', '=', 'clochers.id_clocher')
+                                             ->where('id_paroisses', '=', $id_paroisse)
+                                             ->where('date_annoncee', '!=', null)
+                                             ->where('date_celebree', '=', null)
+                                             ->get()
 
                   ]);
 
@@ -96,8 +108,10 @@ class IntentionsExport implements FromView
               if ($etat == 2) {
 
                   return view('export.index', [
-                      'paroisse' => Intention::where('date_celebree', '!=', null)
-                      ->get()
+                      'paroisse' => Intention::leftjoin('clochers', 'id_clochers', '=', 'clochers.id_clocher')
+                                             ->where('id_paroisses', '=', $id_paroisse)
+                                             ->where('date_celebree', '!=', null)
+                                             ->get()
 
                   ]);
 
