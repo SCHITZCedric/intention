@@ -26,6 +26,8 @@ Route::get('/profil-celebrant', function () {
     return view('celebrant.profil');
 });
 
+Route::get('/profil-celebrant', 'ProfilController@index');
+
 
 Auth::routes();
 
