@@ -50,9 +50,6 @@
                 <th scope="col"> <a>Célébrant</a> </th>
                 <th scope="col"> <a>Clocher</a> </th>
                 <th scope="col"> <a>Modifié le</a> </th>
-                <th width="160px" style="vertical-align: middle">
-                  <a href="{{ url('/exporter/resultat/export') }}" class="btn btn-outline-primary btn-sm"> <i class="fa fa-plus" aria-hidden="true"></i> Exporter les intentions</a>
-                </th>
             </tr>
             </thead>
 

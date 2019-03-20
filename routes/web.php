@@ -22,6 +22,10 @@ Route::get('/date', function () {
     return view('date');
 });
 
+Route::get('/profil-celebrant', function () {
+    return view('celebrant.profil');
+});
+
 
 Auth::routes();
 
