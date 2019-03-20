@@ -101,5 +101,18 @@ class ParoisseController extends Controller
        return redirect('paroisses');
    }
 
+   public function stats()
+   {
+
+
+
+
+
+
+
+     
+     return view('paroisse.statistiques', compact(''));
+   }
+
 
 }

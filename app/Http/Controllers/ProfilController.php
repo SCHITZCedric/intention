@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Exports\ProfilCelebrantExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 use App\Intention;
 use App\Celebrant;
 
@@ -81,5 +84,10 @@ class ProfilController extends Controller
                                                        'nombreAnnonceeMois', 'nombreAnnonceeAnnee',
                                                        'nombreCelebreeMois', 'nombreCelebreeAnnee'));
 
+    }
+
+    public function export()
+    {
+      return Excel::download(new ProfilCelebrantExport, 'ProfilCelebrant.xlsx');
     }
 }

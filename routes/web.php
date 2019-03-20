@@ -22,11 +22,12 @@ Route::get('/date', function () {
     return view('date');
 });
 
-Route::get('/profil-celebrant', function () {
-    return view('celebrant.profil');
-});
+
+Route::get('/statistiques', 'ParoisseController@stats');
+
 
 Route::get('/profil-celebrant', 'ProfilController@index');
+Route::post('/profil-celebrant', 'ProfilController@export');
 
 
 Auth::routes();

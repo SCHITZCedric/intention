@@ -15,7 +15,6 @@
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -92,36 +91,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Profil</h1>
-            <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Exporter en Excel</a> -->
-            <!-- <div class="form-row mb-4"> -->
-              <form class="form-row mb-4" method="POST" action="{{ action ('ProfilController@export')}} ">
-                @csrf
-                <div class="col">
-                    <div class="form-group row">
-                        {!! Form::label("from_date","Du",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
-                        <div class="col-md-10">
-                            <input class="form-control"  type="date" name="from_date">
-                    </div>
-                </div>
-                </div>
-                <div class="col">
-                    <div class="form-group row">
-                        {!! Form::label("to_date","Au",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
-                        <div class="col-md-10">
-                            <input class="form-control"  type="date" name="to_date">
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group row">
-                        <div class="col-md-4">
-                            <button class="btn btn-outline-primary" type="submit">Exporter</button>
-                        </div>
-                    </div>
-                </div>
-            <!-- </div> -->
-            </form>
-
+            <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
           </div>
 
           <!-- Content Row -->
@@ -137,7 +107,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$montantOffrandeMois}} €</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-hand-holding-heart fa-2x text-gray-300"></i>
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -154,7 +124,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$nombreMesse->compteur_messe}}</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-sort-amount-down fa-2x text-gray-300"></i>
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -171,7 +141,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$nombreAnnonceeMois}}</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-bullhorn fa-2x text-gray-300"></i>
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -189,7 +159,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$nombreCelebreeMois}}</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-scroll fa-2x text-gray-300"></i>
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -204,7 +174,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$montantOffrandeAnnee}} €</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-hand-holding-heart fa-2x text-gray-300"></i>
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -221,7 +191,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$nombreBinage->compteur_binage}}</div>
                     </div>
                     <div class="col-auto">
-                    <i class="fas fa-sort-amount-up fa-2x text-gray-300"></i>
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -238,7 +208,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$nombreAnnonceeAnnee}}</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-bullhorn fa-2x text-gray-300"></i>
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -256,7 +226,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$nombreCelebreeAnnee}}</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-scroll fa-2x text-gray-300"></i>
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>

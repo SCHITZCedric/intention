@@ -20,6 +20,8 @@
 
   <a href="{{ url('/exporter') }}" type="button" class="btn btn-outline-primary btn-lg btn-block"  data-toggle="data" title="En cliquant sur ce bouton, vous allez pouvoir célébrer une intention"> <i class="far fa-file-excel"></i></i> Exporter en format Excel</a>
 
+  <a href="{{ url('/statistiques') }}" type="button" class="btn btn-outline-primary btn-lg btn-block"  data-toggle="data" title="En cliquant sur ce bouton, vous allez obtenir des statistiques sur votre paroisse"> <i class="fas fa-chart-pie"></i></i></i> Statistiques de votre paroisse</a>
+
 
 
 </div>
