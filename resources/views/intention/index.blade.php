@@ -25,10 +25,7 @@
                     <div class="col-md-12">
                         <div class="pull-right">
                             <div class="row-md-8 mr-md-2">
-                              <!-- <a href="" class="btn btn-secondary" data-toggle="modal" data-target="#filterModal">Filtrer</a> -->
-
-
-
+                            <button type="button" class="btn btn-secondary">Surplus : {{$surplusTotal}} €</button>
                             </div>
                         </div>
                     </div>

@@ -29,11 +29,14 @@ class ProfilController extends Controller
 
      $montantOffrandeMois = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id')
                                        ->where('id_celebrants', '=', $id_user)
+                                       ->where('date_celebree', '!=', null)
                                        ->whereMonth('date_celebree', '=', $moisCourant)
+                                       ->whereYear('date_annoncee', '=', $anneeCourant)
                                        ->sum('encaissement');
 
     $montantOffrandeAnnee = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id')
                                        ->where('id_celebrants', '=', $id_user)
+                                       ->where('date_celebree', '!=', null)
                                        ->whereYear('date_celebree', '=', $anneeCourant)
                                        ->sum('encaissement');
 
@@ -49,6 +52,7 @@ class ProfilController extends Controller
                         ->where('id_celebrants', '=', $id_user)
                         ->where('date_annoncee', '!=', null)
                         ->whereMonth('date_annoncee', '=', $moisCourant)
+                        ->whereYear('date_annoncee', '=', $anneeCourant)
                         ->where('date_celebree', '=', null)
                         ->count();
 
@@ -63,6 +67,7 @@ class ProfilController extends Controller
     $nombreCelebreeMois = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id')
                                      ->where('id_celebrants', '=', $id_user)
                                      ->whereMonth('date_celebree', '=', $moisCourant)
+                                     ->whereYear('date_annoncee', '=', $anneeCourant)
                                      ->where('date_celebree', '!=', null)
                                      ->count();
 
