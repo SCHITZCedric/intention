@@ -25,6 +25,8 @@ Route::get('/date', function () {
 
 Route::get('/statistiques', 'ParoisseController@stats');
 
+Route::get('/get-intention-chart-data', 'ChartDataController@getMonthlyIntentionData');
+
 
 Route::get('/profil-celebrant', 'ProfilController@index');
 Route::post('/profil-celebrant', 'ProfilController@export');
