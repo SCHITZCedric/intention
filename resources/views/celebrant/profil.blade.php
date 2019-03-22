@@ -22,7 +22,9 @@
 
 </head>
 
-
+<?php
+setlocale(LC_TIME, 'fra_fra');
+?>
 
 <body id="page-top">
   <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
@@ -133,7 +135,8 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Offrandes en {{date('F')}}</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Offrandes en {{strftime('%B')}}</div>
+
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$montantOffrandeMois}} €</div>
                     </div>
                     <div class="col-auto">
@@ -150,7 +153,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Nombre de messes restantes en {{date('F')}}</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Nombre de messes restantes en {{strftime('%B')}}</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$nombreMesse->compteur_messe}}</div>
                     </div>
                     <div class="col-auto">
@@ -167,7 +170,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Intentions annoncées en {{date('F')}}</div>
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Intentions annoncées en {{strftime('%B')}}</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$nombreAnnonceeMois}}</div>
                     </div>
                     <div class="col-auto">
@@ -185,7 +188,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Intentions célébrées en {{date('F')}}</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Intentions célébrées en {{strftime('%B')}}</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$nombreCelebreeMois}}</div>
                     </div>
                     <div class="col-auto">

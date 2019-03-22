@@ -22,7 +22,9 @@
 
 </head>
 
-
+<?php
+setlocale(LC_TIME, 'fra_fra');
+?>
 
 <body id="page-top">
   <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
@@ -104,11 +106,11 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Offrandes en {{date('F')}}</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"> €</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Offrandes en {{strftime('%B')}}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$montantOffrandeMois}} €</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      <i class="fas fa-hand-holding-heart fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -121,11 +123,11 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Nombre de messes restantes en {{date('F')}}</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Surplus en {{strftime('%B')}}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$montantSurplusMois}} €</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      <i class="fas fa-coins fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -134,15 +136,15 @@
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
+              <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Intentions annoncées en {{date('F')}}</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Intentions annoncées en {{strftime('%B')}}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$nombreAnnonceeMois}}</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      <i class="fas fa-bullhorn fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -156,11 +158,11 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Intentions célébrées en {{date('F')}}</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Intentions célébrées en {{strftime('%B')}}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$nombreCelebreeMois}}</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        <i class="fas fa-scroll fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -172,10 +174,10 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Offrandes en {{date('Y')}}</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$montantOffrandeAnnee}} €</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      <i class="fas fa-hand-holding-heart fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -188,11 +190,11 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Nombre de binages en {{date('F')}}</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Surplus en {{date('Y')}}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$montantSurplusAnnee}} €</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      <i class="fas fa-coins fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -201,15 +203,15 @@
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
+              <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Intentions annoncées en {{date('Y')}}</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Intentions annoncées en {{date('Y')}}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$nombreAnnonceeAnnee}}</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      <i class="fas fa-bullhorn fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -224,10 +226,10 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Intentions célébrées en {{date('Y')}}</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$nombreCelebreeAnnee}}</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        <i class="fas fa-scroll fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -241,65 +243,44 @@
 
             <!-- Area Chart -->
             <div class="col-xl-8 col-lg-7">
-              <div class="card shadow mb-4">
+
+                <div class="card border-left-info shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Intentions célébrées</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
+                  <h6 class="m-0 font-weight-bold text-info">Intentions célébrées en {{date('Y')}}</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-bar">
-                    <canvas id="BarChart"></canvas>
+                    <canvas id="BarChartIntention"></canvas>
                   </div>
                 </div>
               </div>
             </div>
 
             <div class="col-xl-4 col-lg-5">
-  <div class="card shadow mb-4">
+  <div class="card border-left-info shadow mb-4">
     <!-- Card Header - Dropdown -->
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-      <h6 class="m-0 font-weight-bold text-primary">Clochers utilisées</h6>
-      <div class="dropdown no-arrow">
-        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-          <div class="dropdown-header">Dropdown Header:</div>
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
+      <h6 class="m-0 font-weight-bold text-info">Clochers utilisées en {{strftime('%B')}} {{date('Y')}}</h6>
     </div>
     <!-- Card Body -->
     <div class="card-body">
       <div class="chart-pie pt-4 pb-2">
-        <canvas id="myPieChart"></canvas>
+        <canvas id="PieChartClocher"></canvas>
       </div>
       <div class="mt-4 text-center small">
+
         <span class="mr-2">
-          <i class="fas fa-circle text-primary"></i> Direct
+          <!-- <i class="fas fa-circle text-primary"></i>  -->
         </span>
         <span class="mr-2">
-          <i class="fas fa-circle text-success"></i> Social
+          <!-- <i class="fas fa-circle text-success"></i> -->
         </span>
         <span class="mr-2">
-          <i class="fas fa-circle text-info"></i> Referral
+          <!-- <i class="fas fa-circle text-info"></i> -->
         </span>
+
       </div>
     </div>
   </div>
@@ -325,7 +306,20 @@
                     </tr>
                   </thead>
                   <tbody>
-
+                    @foreach ($stats as $stat)
+                    <tr>
+                      <td>{{$stat->personne_demandeuse}}</td>
+                      <td>{{$stat->casuel}}</td>
+                      <td>{{$stat->intention}}</td>
+                      @if(isset($stat->clochers->nom))
+                      <td> {{ $stat->clochers->nom }} </td>
+                      @else
+                      <td> Clocher inconnu </td>
+                      @endif
+                      <td>{{ ($stat->date_annoncee? date('d/m/Y', strtotime($stat->date_annoncee)) : '') }}</td>
+                      <td>{{ ($stat->date_celebree ? date('d/m/Y', strtotime($stat->date_celebree)) : '') }}</td>
+                    </tr>
+                    @endforeach
 
                   </tbody>
                 </table>

@@ -28,15 +28,15 @@
 		 */
 		createCompletedJobsChart: function ( response ) {
 
-			var ctx = document.getElementById("BarChart");
+			var ctx = document.getElementById("BarChartIntention");
 			var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: response.months,
     datasets: [{
       label: "Intention",
-      backgroundColor: "#4e73df",
-      hoverBackgroundColor: "#2e59d9",
+      backgroundColor: "#36b9cc",
+      hoverBackgroundColor: "#368dcc",
       borderColor: "#4e73df",
       data: response.intention_count_data,
     }],
