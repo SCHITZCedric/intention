@@ -16,6 +16,7 @@
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="./vendor/jquery/css/style.css">
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -288,6 +289,8 @@ setlocale(LC_TIME, 'fra_fra');
 </div>
 
 
+
+
   <div class="card mb-6">
             <div class="card-header">
               <i class="fas fa-table"></i>
@@ -303,6 +306,7 @@ setlocale(LC_TIME, 'fra_fra');
                       <th>Clocher</th>
                       <th>Date annoncée</th>
                       <th>Date célébrée</th>
+                      <th>Statut</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -312,12 +316,17 @@ setlocale(LC_TIME, 'fra_fra');
                       <td>{{$stat->casuel}}</td>
                       <td>{{$stat->intention}}</td>
                       @if(isset($stat->clochers->nom))
-                      <td> {{ $stat->clochers->nom }} </td>
+                      <td>{{ $stat->clochers->nom }} </td>
                       @else
                       <td> Clocher inconnu </td>
                       @endif
                       <td>{{ ($stat->date_annoncee? date('d/m/Y', strtotime($stat->date_annoncee)) : '') }}</td>
                       <td>{{ ($stat->date_celebree ? date('d/m/Y', strtotime($stat->date_celebree)) : '') }}</td>
+                      @if(!empty($stat->date_celebree))
+                      <td><span class="badge badge-success">Célébrée</span></td>
+                      @else
+                      <td><span class="badge badge-warning">Annoncée</span></td>
+                      @endif
                     </tr>
                     @endforeach
 
@@ -379,6 +388,7 @@ setlocale(LC_TIME, 'fra_fra');
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-bar-intention.js"></script>
   <script src="js/demo/chart-pie-clocher.js"></script>
+
 
 </body>
 

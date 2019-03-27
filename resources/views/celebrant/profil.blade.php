@@ -220,7 +220,7 @@ setlocale(LC_TIME, 'fra_fra');
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Nombre de binages en {{date('F')}}</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Nombre de binages en {{strftime('%B')}}</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$nombreBinage->compteur_binage}}</div>
                     </div>
                     <div class="col-auto">

@@ -37,7 +37,7 @@
     <br>
 </div>
 
-
+<div class="card mb-6">
   <div class="col-sm-9">
 <div class="row filter_data">
   <table class="table table-hover">
@@ -110,8 +110,9 @@
   </div>
 
   </div>
-  </div>
-  </div>
+</div>
+
+
 
 
 
