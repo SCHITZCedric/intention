@@ -17,7 +17,9 @@
               <option selected value="">Choisir un type d'intention</option>
               <option value="Intention"> Intention </option>
               <option value="Mariage"> Mariage </option>
-              <option value="Obsèque"> Obsèque </option>
+              <option value="Mariage avec Messe"> Mariage avec Messe</option>
+              <option value="Funérailles"> Funérailles </option>
+              <option value="Funérailles avec Messe"> Funérailles avec Messe</option>
           </select>
           <span id="error-casuel" class="invalid-feedback"></span>
       </div>

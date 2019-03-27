@@ -78,7 +78,7 @@ class IntentionController extends Controller
   public function create(Request $request)
   {
       if ($request->isMethod('get'))
-      return view('intention.form');
+      return view('accueil.addintention');
 
 
       $rules = [
@@ -113,10 +113,7 @@ class IntentionController extends Controller
 
       $intention->save();
 
-      return response()->json([
-        'fail' => false,
-        'redirect_url' => url('/intentions')
-      ]);
+      return view('accueil.accueil');
   }
 
   public function update(Request $request, $id)
@@ -158,10 +155,7 @@ class IntentionController extends Controller
 
       $intention->save();
 
-      return response()->json([
-        'fail' => false,
-        'redirect_url' => url('intentions')
-      ]);
+      return view('accueil.accueil');
   }
 
 

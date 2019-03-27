@@ -28,6 +28,6 @@ class CelebrantComposerProvider extends ServiceProvider
 
     public function composeListCelebrant()
     {
-      view()->composer(['intention.form', 'intention.index', 'intention.ajax', 'filterIntention.index', 'filterIntention.form', 'accueil.recherche', 'intention.editform', 'accueil.addintention', 'accueil.export'], 'App\Http\ViewComposers\ListCelebrantComposer');
+      view()->composer(['intention.form', 'intention.index', 'intention.ajax', 'intention.addintention', 'filterIntention.index', 'filterIntention.form', 'accueil.recherche', 'intention.editform', 'accueil.addintention', 'accueil.export'], 'App\Http\ViewComposers\ListCelebrantComposer');
     }
 }

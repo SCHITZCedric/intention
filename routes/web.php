@@ -28,7 +28,6 @@ Route::get('/statistiques', 'ParoisseController@stats');
 Route::get('/get-intention-chart-data', 'ChartDataController@getMonthlyIntentionData');
 Route::get('/get-clocher-chart-data', 'ChartDataController@getMonthlyClocherData');
 
-Route::get('/test', 'ChartDataController@getAllClochers');
 
 
 Route::get('/profil-celebrant', 'ProfilController@index');
@@ -40,12 +39,12 @@ Auth::routes();
 Route::group(['middleware' => ['auth', 'roles:Admin']], function(){
 
   Route::get('/accueil', function () { return view('accueil.accueil'); });
-  Route::get('/accueil/ajouter-intention', function () { return view('accueil.addintention'); });
-  Route::post('/accueil/ajouter-intention', 'IntentionController@create');
+
+  Route::match(['GET', 'POST'], '/ajouter-intention', 'IntentionController@create');
 
   Route::group(['prefix' => 'recherche'], function(){
     Route::get('/', function() { return view('accueil.recherche'); });
-    Route::post('/resultat', 'RechercheController@filter');
+    Route::match(['GET', 'POST'],'/resultat', 'RechercheController@filter');
     Route::match(['GET', 'PUT'], '/resultat/update/{id}', 'IntentionController@update');
 
   });
