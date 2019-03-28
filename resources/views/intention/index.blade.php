@@ -10,17 +10,7 @@
             <div class="col-sm-5">
               <div class="pull-right">
                 <div class="input-group">
-                    <input class="form-control mr-sm-2" id="search"
-                           value="{{ request()->session()->get('search') }}"
-                           onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('intentions/')}}?search='+this.value)"
-                           placeholder="Rechercher une intention..." name="search"
-                           type="search"/>
-                    <div class="input-group-btn">
-                        <button type="submit" class="btn btn-secondary"
-                                onclick="ajaxLoad('{{url('intentions/')}}?search='+$('#search').val())">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
+                    <input class="form-control" id="search" type="text" placeholder="Rechercher...">
                     <div class="input-group-btn">
                     <div class="col-md-12">
                         <div class="pull-right">
@@ -37,87 +27,87 @@
     <br>
 </div>
 
-<div class="card mb-6">
-  <div class="col-sm-9">
+<div class="row">
 
-  <table class="table table-hover">
-      <thead>
-          <br>
-      <tr>
-          <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=created_at&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Date d'ajout</a>
-              {{request()->session()->get('field')=='created_at'?(request()->session()->get('sort')=='asc'?'':''):''}}
-          </th>
-          <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=reglement&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Reglement</a>
-              {{request()->session()->get('field')=='reglement'?(request()->session()->get('sort')=='asc'?'':''):''}}
-          </th>
-          <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=encaissement&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Offrande</a>
-              {{request()->session()->get('field')=='encaissement'?(request()->session()->get('sort')=='asc'?'':''):''}}
-          </th>
-          <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=surplus&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Surplus</a>
-              {{request()->session()->get('field')=='surplus'?(request()->session()->get('sort')=='asc'?'':''):''}}
-          </th>
-          <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=casuel&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Casuel</a>
-              {{request()->session()->get('field')=='casuel'?(request()->session()->get('sort')=='asc'?'':''):''}}
-          </th>
+  <div class="col">
+    <div class="col-sm-9">
 
-          <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=personne_demandeuse&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Demandeur</a>
-              {{request()->session()->get('field')=='personne_demandeuse'?(request()->session()->get('sort')=='asc'?'':''):''}}
-          </th>
+    <table class="table table-hover">
+        <thead>
+            <br>
+        <tr>
+            <th scope="col">
+                <a href="javascript:ajaxLoad('{{url('intentions/?field=created_at&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Date d'ajout</a>
+                {{request()->session()->get('field')=='created_at'?(request()->session()->get('sort')=='asc'?'':''):''}}
+            </th>
+            <th scope="col">
+                <a href="javascript:ajaxLoad('{{url('intentions/?field=reglement&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Reglement</a>
+                {{request()->session()->get('field')=='reglement'?(request()->session()->get('sort')=='asc'?'':''):''}}
+            </th>
+            <th scope="col">
+                <a href="javascript:ajaxLoad('{{url('intentions/?field=encaissement&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Offrande</a>
+                {{request()->session()->get('field')=='encaissement'?(request()->session()->get('sort')=='asc'?'':''):''}}
+            </th>
+            <th scope="col">
+                <a href="javascript:ajaxLoad('{{url('intentions/?field=surplus&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Surplus</a>
+                {{request()->session()->get('field')=='surplus'?(request()->session()->get('sort')=='asc'?'':''):''}}
+            </th>
+            <th scope="col">
+                <a href="javascript:ajaxLoad('{{url('intentions/?field=casuel&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Casuel</a>
+                {{request()->session()->get('field')=='casuel'?(request()->session()->get('sort')=='asc'?'':''):''}}
+            </th>
 
-          <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=intention&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Intention souhaitée</a>
-              {{request()->session()->get('field')=='intention'?(request()->session()->get('sort')=='asc'?'':''):''}}
-          </th>
-          <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=date_souhaitee&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Date souhaitée</a>
-              {{request()->session()->get('field')=='date_souhaitee'?(request()->session()->get('sort')=='asc'?'':''):''}}
-          </th>
-          <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=date_annoncee&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Annoncée le</a>
-              {{request()->session()->get('field')=='date_annoncee'?(request()->session()->get('sort')=='asc'?'':''):''}}
-          </th>
-          <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=date_celebree&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Célébrée le </a>
-              {{request()->session()->get('field')=='date_celebree'?(request()->session()->get('sort')=='asc'?'':''):''}}
-          </th>
-          <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=id_celebrants&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Célébrant</a>
-              {{request()->session()->get('field')=='id_celebrants'?(request()->session()->get('sort')=='asc'?'':''):''}}
-          </th>
-          <th scope="col">
-              <a href="javascript:ajaxLoad('{{url('intentions/?field=id_clochers&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Clocher</a>
-              {{request()->session()->get('field')=='id_clochers'?(request()->session()->get('sort')=='asc'?'':''):''}}
-          </th>
-          <th scope="col">
-            <a href="javascript:ajaxLoad('{{url('intentions/?field=commentaire&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Commentaire</a>
-            {{request()->session()->get('field')=='commentaire'?(request()->session()->get('sort')=='asc'?'':''):''}}
-          </th>
-          <th scope="col">
-            <a href="javascript:ajaxLoad('{{url('intentions/?field=updated_at&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Modifié le</a>
-            {{request()->session()->get('field')=='updated_at'?(request()->session()->get('sort')=='asc'?'':''):''}}
-          </th>
-          <th width="160px" style="vertical-align: middle">
-            <a href="javascript:ajaxLoad('{{url('intentions/create')}}')" class="btn btn-outline-primary btn-sm"> <i class="fa fa-plus" aria-hidden="true"></i> Nouvelle intention</a>
-          </th>
-      </tr>
-      </thead>
+            <th scope="col">
+                <a href="javascript:ajaxLoad('{{url('intentions/?field=personne_demandeuse&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Demandeur</a>
+                {{request()->session()->get('field')=='personne_demandeuse'?(request()->session()->get('sort')=='asc'?'':''):''}}
+            </th>
+
+            <th scope="col">
+                <a href="javascript:ajaxLoad('{{url('intentions/?field=intention&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Intention souhaitée</a>
+                {{request()->session()->get('field')=='intention'?(request()->session()->get('sort')=='asc'?'':''):''}}
+            </th>
+            <th scope="col">
+                <a href="javascript:ajaxLoad('{{url('intentions/?field=date_souhaitee&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Date souhaitée</a>
+                {{request()->session()->get('field')=='date_souhaitee'?(request()->session()->get('sort')=='asc'?'':''):''}}
+            </th>
+            <th scope="col">
+                <a href="javascript:ajaxLoad('{{url('intentions/?field=date_annoncee&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Annoncée le</a>
+                {{request()->session()->get('field')=='date_annoncee'?(request()->session()->get('sort')=='asc'?'':''):''}}
+            </th>
+            <th scope="col">
+                <a href="javascript:ajaxLoad('{{url('intentions/?field=date_celebree&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Célébrée le </a>
+                {{request()->session()->get('field')=='date_celebree'?(request()->session()->get('sort')=='asc'?'':''):''}}
+            </th>
+            <th scope="col">
+                <a href="javascript:ajaxLoad('{{url('intentions/?field=id_celebrants&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Célébrant</a>
+                {{request()->session()->get('field')=='id_celebrants'?(request()->session()->get('sort')=='asc'?'':''):''}}
+            </th>
+            <th scope="col">
+                <a href="javascript:ajaxLoad('{{url('intentions/?field=id_clochers&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Clocher</a>
+                {{request()->session()->get('field')=='id_clochers'?(request()->session()->get('sort')=='asc'?'':''):''}}
+            </th>
+            <th scope="col">
+              <a href="javascript:ajaxLoad('{{url('intentions/?field=commentaire&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Commentaire</a>
+              {{request()->session()->get('field')=='commentaire'?(request()->session()->get('sort')=='asc'?'':''):''}}
+            </th>
+            <th scope="col">
+              <a href="javascript:ajaxLoad('{{url('intentions/?field=updated_at&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Modifié le</a>
+              {{request()->session()->get('field')=='updated_at'?(request()->session()->get('sort')=='asc'?'':''):''}}
+            </th>
+            <th scope="col">
+              <!-- <a href="javascript:ajaxLoad('{{url('intentions/create')}}')" class="btn btn-outline-primary btn-sm"> <i class="fa fa-plus" aria-hidden="true"></i> Nouvelle intention</a> -->
+              <a href="">Action</a>
+            </th>
+        </tr>
+        </thead>
+    </div>
+
+    </div>
+
+
   </div>
 
-  </div>
-</div>
-
-
-
-
-
-
-  <tbody>
+  <tbody id="intentionTable">
 
 
   <tr class="col">
@@ -138,10 +128,10 @@
            <td> Célébrant inconnu </td>
            @endif
            @if(isset($intention->clochers->nom))
-           <td> {{ $intention->clochers->nom }} </td>
+           <td class="col-md-5"> {{ $intention->clochers->nom }} </td>
            @else
            @if(isset($intention->paroisse_origine))
-           <td>{{ $intention->paroisses->nom }}</td>
+           <td class="col-md-5">{{ $intention->paroisses->nom }}</td>
            @endif
            @endif
            <td> {{ $intention->commentaire }} </td>
@@ -160,9 +150,16 @@
 
   </tbody>
   </table>
-</div>
 
 
 
-
-</div>
+<script>
+$(document).ready(function(){
+  $("#search").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#intentionTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
