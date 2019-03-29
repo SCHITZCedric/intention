@@ -29,14 +29,20 @@ Route::get('/get-intention-chart-data', 'ChartDataController@getMonthlyIntention
 Route::get('/get-clocher-chart-data', 'ChartDataController@getMonthlyClocherData');
 
 
+Route::group(['prefix' => 'profil-celebrant'], function() {
+  Route::get('/', 'ProfilController@index');
+  Route::post('/', 'ProfilController@celebrer');
+});
 
-Route::get('/profil-celebrant', 'ProfilController@index');
-Route::post('/profil-celebrant', 'ProfilController@export');
+
+
+Route::get('/comptable', 'ComptableController@index');
+Route::post('/comptable/exporter', 'ComptableController@export');
+
 
 
 Auth::routes();
 
-Route::group(['middleware' => ['auth', 'roles:Admin']], function(){
 
   Route::get('/accueil', function () { return view('accueil.accueil'); });
 
@@ -62,7 +68,7 @@ Route::post('/exporter/resultat/export', 'IntentionController@export');
 });
 
   Route::group(['prefix' => 'utilisateurs'], function() {
-    Route::get('/', 'UtilisateurController@index');
+    // Route::get('/', 'UtilisateurController@index');
     Route::match(['get', 'post'], 'create', 'UtilisateurController@create');
     Route::match(['get', 'put'], '/update/{id}', 'UtilisateurController@update');
     Route::delete('delete/{id}', 'UtilisateurController@destroy');
@@ -75,23 +81,43 @@ Route::get('utilisateurs/', [
 
 ]);
 
+Route::get('celebrants/', [
+    'uses' => 'CelebrantController@index',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+
+]);
+
+Route::get('clochers/', [
+    'uses' => 'ClocherController@index',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+
+]);
+
+Route::get('paroisses/', [
+    'uses' => 'ParoisseController@index',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+
+]);
 
 Route::group(['prefix' => 'celebrants'], function() {
-  Route::get('/', 'CelebrantController@index');
+
   Route::match(['get', 'post'], '/create', 'CelebrantController@create');
   Route::match(['get', 'put'], '/update/{id}', 'CelebrantController@update');
   Route::delete('delete/{id}', 'CelebrantController@destroy');
 });
 
 Route::group(['prefix' => 'clochers'], function() {
-  Route::get('/', 'ClocherController@index');
+
   Route::match(['get', 'post'], 'create', 'ClocherController@create');
   Route::match(['get', 'put'], '/update/{id}', 'ClocherController@update');
   Route::delete('delete/{id}', 'ClocherController@destroy');
 });
 
 Route::group(['prefix' => 'paroisses'], function() {
-  Route::get('/', 'ParoisseController@index');
+
   Route::match(['get', 'post'], 'create', 'ParoisseController@create');
   Route::match(['get', 'put'], 'update/{id}', 'ParoisseController@update');
   Route::delete('delete/{id}', 'ParoisseController@destroy');
@@ -107,9 +133,4 @@ Route::group(['prefix' => 'transfert'], function() {
   Route::get('/', 'TransfertController@index');
   Route::get('update/{id}', 'TransfertController@transfert');
   Route::post('update/{id}', 'TransfertController@update');
-});
-
-
-
-
 });

@@ -7,13 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Celebrant extends Model
 {
 
+public $primaryKey = 'id_celebrant';
   //protected $table = 'celebrants';
  protected $fillable = ['nom','prenom','en_service', 'compteur_messe', 'compteur_binage', 'id_paroisses', 'id_statuts'];
 
  public $timestamps = false;
 
  public function intentionReview() {
-   return $this->hasMany('App\Intention', 'id_celebrants');
+   return $this->hasMany('App\Intention', 'id_celebrants', 'id_celebrant');
  }
 
 

@@ -36,6 +36,10 @@ public function redirectTo()
   if ($this->guard()->user()->isCelebrant()) {
     return "/profil-celebrant";
   }
+
+  if ($this->guard()->user()->isComptable()) {
+    return "/comptable";
+  }
     return "/accueil";
 }
 

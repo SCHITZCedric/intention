@@ -70,4 +70,13 @@ class User extends Authenticatable
        return false;
   }
 
+
+  public function isComptable()
+  {
+    if($this->id_roles == 3) {
+      return true;
+    }
+     return false;
+}
+
 }

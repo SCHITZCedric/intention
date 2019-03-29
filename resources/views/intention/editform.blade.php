@@ -71,7 +71,7 @@
                 <select class="form-control" name="id_celebrants" id="id_celebrants">
                     <option selected value="">Choisir un célébrant</option>
                     @foreach ($ListCelebrant as $celebrant)
-                      <option value="{{ $celebrant->id }}">{{ $celebrant->paroisses->nom }} : {{ $celebrant->nom }} {{ $celebrant->prenom }}</option>
+                      <option value="{{ $celebrant->id_celebrant }}">{{ $celebrant->paroisses->nom }} : {{ $celebrant->nom }} {{ $celebrant->prenom }}</option>
                     @endforeach
                 </select>
                  <span id="error-id_celebrants" class="invalid-feedback"></span>

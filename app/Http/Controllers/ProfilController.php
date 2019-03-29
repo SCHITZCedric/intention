@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+
 
 use App\Exports\ProfilCelebrantExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -23,33 +25,33 @@ class ProfilController extends Controller
       $intentions = new Intention();
       $celebrants = new Celebrant();
 
-      $stats = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id')
+      $stats = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id_celebrant')
                           ->where('id_celebrants', '=', $id_user)
                           ->orderBy('date_annoncee')
                           ->get();
 
-     $montantOffrandeMois = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id')
+     $montantOffrandeMois = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id_celebrant')
                                        ->where('id_celebrants', '=', $id_user)
                                        ->where('date_celebree', '!=', null)
                                        ->whereMonth('date_celebree', '=', $moisCourant)
                                        ->whereYear('date_annoncee', '=', $anneeCourant)
                                        ->sum('encaissement');
 
-    $montantOffrandeAnnee = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id')
+    $montantOffrandeAnnee = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id_celebrant')
                                        ->where('id_celebrants', '=', $id_user)
                                        ->where('date_celebree', '!=', null)
                                        ->whereYear('date_celebree', '=', $anneeCourant)
                                        ->sum('encaissement');
 
     $nombreMesse = $celebrants->select('compteur_messe')
-                              ->where('id', '=', $id_user)
+                              ->where('id_celebrant', '=', $id_user)
                               ->first();
 
     $nombreBinage = $celebrants->select('compteur_binage')
-                               ->where('id', '=', $id_user)
+                               ->where('id_celebrant', '=', $id_user)
                                ->first();
 
-    $nombreAnnonceeMois = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id')
+    $nombreAnnonceeMois = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id_celebrant')
                         ->where('id_celebrants', '=', $id_user)
                         ->where('date_annoncee', '!=', null)
                         ->whereMonth('date_annoncee', '=', $moisCourant)
@@ -57,7 +59,7 @@ class ProfilController extends Controller
                         ->where('date_celebree', '=', null)
                         ->count();
 
-    $nombreAnnonceeAnnee = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id')
+    $nombreAnnonceeAnnee = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id_celebrant')
                         ->where('id_celebrants', '=', $id_user)
                         ->where('date_annoncee', '!=', null)
                         ->whereYear('date_annoncee', '=', $anneeCourant)
@@ -65,14 +67,14 @@ class ProfilController extends Controller
                         ->count();
 
 
-    $nombreCelebreeMois = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id')
+    $nombreCelebreeMois = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id_celebrant')
                                      ->where('id_celebrants', '=', $id_user)
                                      ->whereMonth('date_celebree', '=', $moisCourant)
-                                     ->whereYear('date_annoncee', '=', $anneeCourant)
+                                     ->whereYear('date_celebree', '=', $anneeCourant)
                                      ->where('date_celebree', '!=', null)
                                      ->count();
 
-    $nombreCelebreeAnnee = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id')
+    $nombreCelebreeAnnee = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id_celebrant')
                                       ->where('id_celebrants', '=', $id_user)
                                       ->whereYear('date_celebree', '=', $anneeCourant)
                                       ->where('date_celebree', '!=', null)
@@ -96,4 +98,53 @@ class ProfilController extends Controller
     {
       return Excel::download(new ProfilCelebrantExport, 'ProfilCelebrant.xlsx');
     }
+
+
+    public function celebrer(Request $request)
+    {
+
+        $rules = [
+          'payee' => '',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails())
+        return response()->json([
+          'fail' =>true,
+          'errors' => $validator->errors()
+        ]);
+
+        $celebrant = new Celebrant();
+        $array = ($request->celebrer); // On récupère la valeur de la checkbox qui est l'id de l'intention que l'on souhaite update
+        $sizeArray = sizeof($array);
+        $regler = Intention::whereIn('id', $array);
+        $id = Auth::user()->id;
+
+        while ($sizeArray > 0) {
+            $compteur_messe_null = $celebrant->select('compteur_messe')
+                                              ->where('id_celebrant', '=', $id)
+                                              ->first();
+
+
+              if ($compteur_messe_null->compteur_messe == 0) {
+
+                Celebrant::find($id)->increment('compteur_binage');
+
+              } else  {
+                Celebrant::find($id)->decrement('compteur_messe');
+              }
+
+            $sizeArray--;
+
+        }
+        $regler->update([
+          'date_celebree' => date("y-m-d"),
+          'id_celebrants' => $id,
+      ]);
+
+        return redirect('/profil-celebrant');
+
+
+    }
+
 }

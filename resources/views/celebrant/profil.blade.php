@@ -30,7 +30,7 @@ setlocale(LC_TIME, 'fra_fra');
   <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
       <div class="container">
               <!--Logo diocèse cliquable barre de naviguation-->
-          <a href="{{ url('/accueil') }}"> <img class="navbar-brand" src="./img/logo_diocese.jpg" alt="Logo du diocèse de Nancy/Toul"   width="200" height="110"> </a>
+          <a> <img class="navbar-brand" src="./img/logo_diocese.jpg" alt="Logo du diocèse de Nancy/Toul"   width="200" height="110"> </a>
                   <!-- Barre de naviguation-->
               <ul class="navbar-nav ml-auto">
 
@@ -40,21 +40,13 @@ setlocale(LC_TIME, 'fra_fra');
 
                           <li class="nav-item dropdown">
 
-                              <h5> <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                              <h5> <a id="navbarDropdown" class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                   <i class="fas fa-user"> </i>
                                   {{ Auth::user()->nom }} {{ Auth::user()->prenom }} <span class="caret"></span>
                                   </a>
                               <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                                  <a class="dropdown-item disabled" tabindex="-1" aria-disabled="true">Panneau administrateur</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="{{ url('/celebrants/') }}"> <i class="fas fa-user-cog"></i> Gérer les célébrants</a>
-                                  <a class="dropdown-item" href="{{ url('/utilisateurs') }}"> <i class="fas fa-users-cog"></i> Gérer les utilisateurs</a>
-
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="{{ url('/paroisses') }}"><i class="fas fa-place-of-worship"></i></i> Gérer les paroisses</a>
-                                  <a class="dropdown-item" href="{{ url('/clochers') }}"> <i class="fas fa-church"></i> Gérer les clochers</a>
                                   <!----------------------------------------------->
-                                  <div class="dropdown-divider"></div>
+                                  
                                   <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fas fa-sign-out-alt"></i>
                                       {{ __('Se déconnecter') }}
                                   </a>
@@ -96,9 +88,9 @@ setlocale(LC_TIME, 'fra_fra');
             <h1 class="h3 mb-0 text-gray-800">Profil</h1>
             <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Exporter en Excel</a> -->
             <!-- <div class="form-row mb-4"> -->
-              <form class="form-row mb-4" method="POST" action="{{ action ('ProfilController@export')}} ">
-                @csrf
-                <div class="col">
+
+
+                <!-- <div class="col">
                     <div class="form-group row">
                         {!! Form::label("from_date","Du",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
                         <div class="col-md-10">
@@ -117,14 +109,17 @@ setlocale(LC_TIME, 'fra_fra');
                 <div class="col">
                     <div class="form-group row">
                         <div class="col-md-4">
-                            <button class="btn btn-outline-primary" type="submit">Exporter</button>
+                            <button class="btn btn-outline-primary" type="submit" value="valider1">Exporter</button>
                         </div>
                     </div>
-                </div>
-            <!-- </div> -->
-            </form>
+                </div> -->
+
+            <!-- </form> -->
 
           </div>
+
+          <form method="POST">
+            @csrf
 
           <!-- Content Row -->
           <div class="row">
@@ -277,7 +272,7 @@ setlocale(LC_TIME, 'fra_fra');
                         Liste des intentions</div>
                       <div class="card-body">
                         <div class="table-responsive">
-                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <table class="table table-bordered"  width="100%" cellspacing="0">
                             <thead>
                               <tr>
                                 <th>Demandeur</th>
@@ -286,6 +281,7 @@ setlocale(LC_TIME, 'fra_fra');
                                 <th>Clocher</th>
                                 <th>Date annoncée</th>
                                 <th>Date célébrée</th>
+                                <th><button type="submit" class="btn btn-outline-dark btn-xs" onclick="return confirm('Êtes-vous sûr de vouloir célébrer le(s) intention(s) séléctionnée(s) ?');">Célébrer</button></th>
                               </tr>
                             </thead>
                             <tbody>
@@ -301,10 +297,31 @@ setlocale(LC_TIME, 'fra_fra');
                                 @endif
                                 <td>{{ ($stat->date_annoncee? date('d/m/Y', strtotime($stat->date_annoncee)) : '') }}</td>
                                 <td>{{ ($stat->date_celebree ? date('d/m/Y', strtotime($stat->date_celebree)) : '') }}</td>
+                                @if(isset($stat->date_annoncee))
+                                @if(isset($stat->date_celebree))
+                                  <td> <input type='checkbox' name="celebrer[]" id='celebrerCheck' class="chkbx" disabled> </td>
+                                @else
+                                <td> <input type='checkbox' value="{{$stat->id}}" name="celebrer[]" id='celebrerCheck' class="chkbx"> </td>
+                                @endif
+                                @endif
+
                               </tr>
                               @endforeach
 
                             </tbody>
+
+
+                            <tfooter>
+                              <tr>
+                                <th>Demandeur</th>
+                                <th>Type</th>
+                                <th>Intention souhaitée</th>
+                                <th>Clocher</th>
+                                <th>Date annoncée</th>
+                                <th>Date célébrée</th>
+                                <th><button type="submit" class="btn btn-outline-dark btn-xs" onclick="return confirm('Êtes-vous sûr de vouloir célébrer le(s) intention(s) séléctionnée(s) ?');">Célébrer</button></th>
+                              </tr>
+                            </tfooter>
                           </table>
                         </div>
                       </div>
@@ -323,6 +340,7 @@ setlocale(LC_TIME, 'fra_fra');
         <!-- /.container-fluid -->
 
       </div>
+    </form>
       <!-- End of Main Content -->
 
       <!-- Footer -->
@@ -340,26 +358,10 @@ setlocale(LC_TIME, 'fra_fra');
 
   </div>
   <!-- End of Page Wrapper -->
-
-
-
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/sb-admin-2.min.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="../vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 

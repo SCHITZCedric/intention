@@ -41,7 +41,7 @@ setlocale(LC_TIME, 'fra_fra');
 
                           <li class="nav-item dropdown">
 
-                              <h5> <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                              <h5> <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                   <i class="fas fa-user"> </i>
                                   {{ Auth::user()->nom }} {{ Auth::user()->prenom }} <span class="caret"></span>
                                   </a>

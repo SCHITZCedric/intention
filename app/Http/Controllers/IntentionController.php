@@ -141,10 +141,8 @@ class IntentionController extends Controller
 
       $intention->save();
 
-      return response()->json([
-        'fail' => false,
-        'redirect_url' => url('intentions')
-      ]);
+
+      return redirect('/intentions');
   }
 
 
