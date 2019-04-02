@@ -17,9 +17,9 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="./vendor/jquery/css/style.css">
-
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
 
 </head>
 
@@ -289,6 +289,28 @@ setlocale(LC_TIME, 'fra_fra');
 </div>
 
 
+<div class="row">
+
+  <!-- Area Chart -->
+  <div class="col-xl-12 col-lg-7">
+
+      <div class="card border-left-info shadow mb-4">
+      <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-info">Calendrier</h6>
+        </div>
+      <!-- Card Body -->
+      <div class="card-body">
+
+            <div id="calendar"></div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
 
 
   <div class="card mb-6">
@@ -350,7 +372,6 @@ setlocale(LC_TIME, 'fra_fra');
 
         <!-- /.container-fluid -->
 
-      </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
@@ -363,10 +384,9 @@ setlocale(LC_TIME, 'fra_fra');
       </footer> -->
       <!-- End of Footer -->
 
-    </div>
     <!-- End of Content Wrapper -->
 
-  </div>
+
   <!-- End of Page Wrapper -->
 
 
@@ -375,6 +395,11 @@ setlocale(LC_TIME, 'fra_fra');
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Calendar core JavaScript -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/locale/fr.js'></script>
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -385,9 +410,14 @@ setlocale(LC_TIME, 'fra_fra');
   <!-- Page level plugins -->
   <script src="vendor/chart.js/Chart.min.js"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-bar-intention.js"></script>
-  <script src="js/demo/chart-pie-clocher.js"></script>
+  <!-- Graphique et calendrier js -->
+  <script src="js/chart-bar-intention.js"></script>
+  <script src="js/chart-pie-clocher.js"></script>
+  <script src="js/calendar.js"></script>
+
+  <script type="script" src="/code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
 
 
 </body>
