@@ -16,7 +16,7 @@
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  <link rel="stylesheet" href="./vendor/jquery/css/style.css">
+  <link rel="stylesheet" href="vendor/jquery/css/style.css">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
@@ -98,7 +98,7 @@ setlocale(LC_TIME, 'fra_fra');
             <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
           </div>
 
-          <!-- Content Row -->
+          <!-- Content Row 1-->
           <div class="row">
 
             <!-- Earnings (Monthly) Card Example -->
@@ -237,14 +237,10 @@ setlocale(LC_TIME, 'fra_fra');
               </div>
             </div>
           </div>
-
-
-          <!-- Content Row -->
+          <!-- Content Row 2 -->
           <div class="row">
-
-            <!-- Area Chart -->
+            <!-- Bar Chart -->
             <div class="col-xl-8 col-lg-7">
-
                 <div class="card border-left-info shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -260,56 +256,38 @@ setlocale(LC_TIME, 'fra_fra');
             </div>
 
             <div class="col-xl-4 col-lg-5">
-  <div class="card border-left-info shadow mb-4">
-    <!-- Card Header - Dropdown -->
-    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-      <h6 class="m-0 font-weight-bold text-info">Clochers utilisées en {{strftime('%B')}} {{date('Y')}}</h6>
-    </div>
-    <!-- Card Body -->
-    <div class="card-body">
-      <div class="chart-pie pt-4 pb-2">
-        <canvas id="PieChartClocher"></canvas>
-      </div>
-      <div class="mt-4 text-center small">
+              <div class="card border-left-info shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-info">Clochers utilisées en {{strftime('%B')}} {{date('Y')}}</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4 pb-2">
+                    <canvas id="PieChartClocher"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <span class="mr-2">
-          <!-- <i class="fas fa-circle text-primary"></i>  -->
-        </span>
-        <span class="mr-2">
-          <!-- <i class="fas fa-circle text-success"></i> -->
-        </span>
-        <span class="mr-2">
-          <!-- <i class="fas fa-circle text-info"></i> -->
-        </span>
+          <!-- Content Row 3 -->
+          <div class="row">
+            <!-- Calendar -->
+            <div class="col-xl-12 col-lg-7">
+              <div class="card border-left-info shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-info">Calendrier</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div id="calendar"></div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-
-<div class="row">
-
-  <!-- Area Chart -->
-  <div class="col-xl-12 col-lg-7">
-
-      <div class="card border-left-info shadow mb-4">
-      <!-- Card Header - Dropdown -->
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-info">Calendrier</h6>
-        </div>
-      <!-- Card Body -->
-      <div class="card-body">
-
-            <div id="calendar"></div>
-
-      </div>
-    </div>
-  </div>
-
-</div>
-</div>
 
 
 
@@ -395,11 +373,10 @@ setlocale(LC_TIME, 'fra_fra');
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Calendar core JavaScript -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/locale/fr.js'></script>
+  <script type="script" src="code.jquery.com/jquery-1.11.3.min.js"></script>
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -410,15 +387,42 @@ setlocale(LC_TIME, 'fra_fra');
   <!-- Page level plugins -->
   <script src="vendor/chart.js/Chart.min.js"></script>
 
-  <!-- Graphique et calendrier js -->
+  <!-- Page level custom scripts -->
   <script src="js/chart-bar-intention.js"></script>
   <script src="js/chart-pie-clocher.js"></script>
-  <script src="js/calendar.js"></script>
 
-  <script type="script" src="/code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script>
+        $(document).ready(function() {
+            // page is now ready, initialize the calendar...
+            $('#calendar').fullCalendar({
+                // put your options and callbacks here
+                plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list'],
+                      locale: 'fr',
+                      header: {
+                          left: 'prev,next today',
+                          center: 'title',
+                          right: 'month,basicWeek,basicDay,listMonth'
+                      },
+                      defaultDate: moment(),
+                      height: 600,
+                      navLinks: true, // can click day/week names to navigate views
+                      editable: true,
+                      eventLimit: true, // allow "more" link when too many events
+                events : [
+                    @foreach($calendar as $task)
+                    {
+                        title : '{{ $task->intention }}',
+                        start : '{{ $task->date_annoncee }}',
+                        description : '{{ $task->casuel }}',
+                    },
+                    @endforeach
+                ],
+                eventColor: '#1c74bb',
+                eventTextColor: '#ffffff'
+            })
 
-
-
+        });
+    </script>
 
 </body>
 

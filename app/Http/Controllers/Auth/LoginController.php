@@ -31,7 +31,6 @@ class LoginController extends Controller
 public function redirectTo()
 {
 
-  // TODO Créer la page de profil d'un celebrants
 
   if ($this->guard()->user()->isCelebrant()) {
     return "/profil-celebrant";

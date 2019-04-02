@@ -27,6 +27,11 @@ Route::get('/statistiques', 'ParoisseController@stats');
 
 Route::get('/get-intention-chart-data', 'ChartDataController@getMonthlyIntentionData');
 Route::get('/get-clocher-chart-data', 'ChartDataController@getMonthlyClocherData');
+Route::get('/get-calendar-data', 'ChartDataController@getIntentionEventCalendar');
+
+Route::get('/test', 'ChartDataController@getIntentionEventCalendar');
+
+
 
 
 Route::group(['prefix' => 'profil-celebrant'], function() {
@@ -60,7 +65,7 @@ Route::get('/exporter', function () { return view('accueil.export'); });
 Route::post('/exporter/resultat/export', 'IntentionController@export');
 
 
-  Route::group(['prefix' => 'intentions'], function() {
+  Route::group(['prefix' => '/intentions'], function() {
     Route::get('/', 'IntentionController@index');
     Route::match(['get', 'post'], '/create', 'IntentionController@create');
     Route::match(['get', 'put'], '/update/{id}', 'IntentionController@update');

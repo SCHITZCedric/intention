@@ -82,12 +82,15 @@ class ProfilController extends Controller
 
 
 
+    $calendar = $intentions->leftjoin('celebrants', 'id_celebrants', '=', 'celebrants.id_celebrant')
+                            ->where('id_celebrants', '=', $id_user)
+                            ->where('date_annoncee', '!=', null)
+                            ->get();
 
 
 
 
-
-      return view('celebrant.profil', compact('stats', 'montantOffrandeMois', 'montantOffrandeAnnee',
+      return view('celebrant.profil', compact('stats','calendar', 'montantOffrandeMois', 'montantOffrandeAnnee',
                                                        'nombreMesse', 'nombreBinage',
                                                        'nombreAnnonceeMois', 'nombreAnnonceeAnnee',
                                                        'nombreCelebreeMois', 'nombreCelebreeAnnee'));

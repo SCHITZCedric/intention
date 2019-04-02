@@ -121,4 +121,24 @@ class ChartDataController extends Controller
 
         return $monthly_clocher_data_array;
     }
+
+    public function getIntentionEventCalendar()
+    {
+      $event_calendar_intention = Intention::where('date_annoncee', '!=', NULL)
+                                           ->get();
+
+        foreach ($event_calendar_intention as $value) {
+            $array_calendar[] = $value->toArray();
+        }
+
+
+      return $array_calendar;
+    }
+
+
+
+
+
+
+
 }

@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Default form register -->
-<form class="text-center border border-light p-5" action="{{ url('exporter/resultat/export')}}" method="POST">
+<form class="text-center border border-light p-5" action="{{ url('accueil/exporter/export')}}" method="POST">
 @csrf
     <p class="h4 mb-4">Vous souhaitez exporter une ou plusieurs intention  au format Excel</p>
 

@@ -16,7 +16,7 @@ class IntentionsExport implements FromView
     */
     public function view(): View
     {
-         //TODO Développer les conditions multiple 
+         //TODO Développer les conditions multiple
                 $id_clochers = request()->input('id_clochers');
                 $id_celebrants = request()->input('id_celebrants');
 
@@ -116,10 +116,5 @@ class IntentionsExport implements FromView
                   ]);
 
               }
-
-
-
-
-
     }
 }

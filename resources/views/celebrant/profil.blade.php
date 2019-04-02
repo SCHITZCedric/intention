@@ -16,7 +16,7 @@
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -46,7 +46,7 @@ setlocale(LC_TIME, 'fra_fra');
                                   </a>
                               <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
                                   <!----------------------------------------------->
-                                  
+
                                   <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fas fa-sign-out-alt"></i>
                                       {{ __('Se déconnecter') }}
                                   </a>
@@ -261,6 +261,27 @@ setlocale(LC_TIME, 'fra_fra');
               </div>
             </div>
           </div>
+          <div class="row">
+
+            <!-- Area Chart -->
+            <div class="col-xl-12 col-lg-7">
+
+                <div class="card border-left-info shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-info">Calendrier</h6>
+                  </div>
+                <!-- Card Body -->
+                <div class="card-body">
+
+                      <div id="calendar"></div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
 
 
           <!-- Content Row -->
@@ -361,7 +382,42 @@ setlocale(LC_TIME, 'fra_fra');
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/sb-admin-2.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/locale/fr.js'></script>
 
+  <script>
+        $(document).ready(function() {
+            // page is now ready, initialize the calendar...
+            $('#calendar').fullCalendar({
+                // put your options and callbacks here
+                plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list'],
+                      locale: 'fr',
+                      header: {
+                          left: 'prev,next today',
+                          center: 'title',
+                          right: 'month,basicWeek,basicDay,listMonth'
+                      },
+                      defaultDate: moment(),
+                      height: 600,
+                      navLinks: true, // can click day/week names to navigate views
+                      editable: true,
+                      eventLimit: true, // allow "more" link when too many events
+                events : [
+                    @foreach($calendar as $task)
+                    {
+                        title : '{{ $task->intention }}',
+                        start : '{{ $task->date_annoncee }}',
+                        description : '{{ $task->casuel }}',
+                    },
+                    @endforeach
+                ],
+                eventColor: '#1c74bb',
+                eventTextColor: '#ffffff'
+            })
+
+        });
+    </script>
 
 </body>
 
