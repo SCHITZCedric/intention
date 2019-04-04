@@ -1,5 +1,6 @@
 
 <script src="{{ asset('js/app.js') }}" defer></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
 <div class="container">
     <div class="row">
@@ -9,17 +10,7 @@
         <div class="col-sm-5">
           <div class="pull-right">
             <div class="input-group">
-                <input class="form-control mr-sm-2" id="search"
-                       value="{{ request()->session()->get('search') }}"
-                       onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('utilisateurs')}}?search='+this.value)"
-                       placeholder="Rechercher un utilisateur" name="search"
-                       type="search"/>
-                <div class="input-group-btn">
-                    <button type="submit" class="btn btn-secondary"
-                            onclick="ajaxLoad('{{url('utilisateurs')}}?search='+$('#search').val())">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
+              <input class="form-control" id="search" type="text" placeholder="Rechercher...">
             </div>
           </div>
         </div>
@@ -63,7 +54,7 @@
         </tr>
         </thead>
 
-        <tbody>
+          <tbody id="Table">
         @foreach ($utilisateurs as $utilisateur)
           <tr>
 
@@ -99,3 +90,6 @@
             {{ $utilisateurs->links() }}
         </ul>
 </div>
+
+
+  <script src="js/live-search.js"></script>

@@ -67,10 +67,6 @@
                 {{request()->session()->get('field')=='intention'?(request()->session()->get('sort')=='asc'?'':''):''}}
             </th>
             <th scope="col">
-                <a href="javascript:ajaxLoad('{{url('intentions/?field=date_souhaitee&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Date souhaitée</a>
-                {{request()->session()->get('field')=='date_souhaitee'?(request()->session()->get('sort')=='asc'?'':''):''}}
-            </th>
-            <th scope="col">
                 <a href="javascript:ajaxLoad('{{url('intentions/?field=date_annoncee&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Annoncée le</a>
                 {{request()->session()->get('field')=='date_annoncee'?(request()->session()->get('sort')=='asc'?'':''):''}}
             </th>
@@ -107,7 +103,7 @@
 
   </div>
 
-  <tbody id="intentionTable">
+  <tbody id="Table">
 
 
   <tr class="col">
@@ -119,7 +115,6 @@
            <td> {{ $intention->casuel }} </td>
            <td> {{ $intention->personne_demandeuse }} </td>
            <td> {{ $intention->intention }} </td>
-           <td> {{ ($intention->date_souhaitee ? date('d/m/Y', strtotime($intention->date_souhaitee)) : '') }} </td>
            <td> {{ ($intention->date_annoncee ? date('d/m/Y', strtotime($intention->date_annoncee)) : '') }} </td>
            <td> {{ ($intention->date_celebree ? date('d/m/Y', strtotime($intention->date_celebree)) : '') }} </td>
            @if(isset($intention->celebrants->nom))
@@ -152,14 +147,4 @@
   </table>
 
 
-
-<script>
-$(document).ready(function(){
-  $("#search").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#intentionTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
+  <script src="js/live-search.js"></script>

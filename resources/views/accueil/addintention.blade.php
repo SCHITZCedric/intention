@@ -36,9 +36,10 @@
 
     </div> -->
 
+
     <div class="row">
       <div class="col-md-4">
-          <select class="form-control required"  id="casuel" name="casuel">
+          <select class="form-control" name="casuel" id="validationTooltip02" required>
               <option selected value="">Choisir un type d'intention</option>
               <option value="Intention"> Intention </option>
               <option value="Mariage"> Mariage </option>
@@ -48,15 +49,10 @@
           </select>
           <span id="error-casuel" class="invalid-feedback"></span>
       </div>
-
-
-      <div class="form-group row required">
-            {!! Form::label("intention","De / Pour",["class"=>"col-form-label col-md-3 col-lg-4"]) !!}
-            <div class="col-md-8">
-                {!! Form::text("intention",null,["class"=>"form-control".($errors->has('intention')?" is-invalid":""),"autofocus",'placeholder'=>'Intention souhaitée']) !!}
-                <span id="error-intention" class="invalid-feedback"></span>
-            </div>
-        </div>
+      <label> De / Pour</label>
+      <div class="col-md-4 mb-3">
+        <input type="text" class="form-control" id="validationTooltip01" placeholder="Intention souhaitée" id="intention" name="intention" required>
+      </div>
     </div>
     <br>
 
@@ -80,14 +76,6 @@
             </div>
         </div>
 
-        <div class="form-group row required">
-            {!! Form::label("date_souhaitee","Date souhaitee",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
-            <div class="col-md-8">
-                {!! Form::date("date_souhaitee",null,["class"=>"form-control".($errors->has('date_souhaitee')?" is-invalid":""),'placeholder'=>'Date souhaitee']) !!}
-                <span id="error-date_souhaitee" class="invalid-feedback"></span>
-            </div>
-        </div>
-
         <div class="form-group row">
             {!! Form::label("date_annoncee","Annoncée le",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
             <div class="col-md-8">
@@ -95,7 +83,7 @@
                 <span id="error-date_annoncee" class="invalid-feedback"></span>
             </div>
         </div>
-        <div class="form-group row required">
+        <div class="form-group row">
             {!! Form::label("id_clochers","Clocher",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
             <div class="col-md-8" >
                 <select class="form-control" name="id_clochers" id="id_clochers">
@@ -111,7 +99,7 @@
 
 
 
-            <div class="form-group row required">
+            <div class="form-group row">
                 {!! Form::label("reglement","Type de reglement",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
                 <div class="col-md-8">
                     {!! Form::text("reglement",null,["class"=>"form-control".($errors->has('reglement')?" is-invalid":""),"autofocus",'placeholder'=>'Exemple : ESP, CHQ, etc...']) !!}
@@ -119,14 +107,12 @@
                 </div>
             </div>
 
-            <div class="form-group row required">
-                {!! Form::label("encaissement","Montant de l'offrande",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
-                <div class="col-md-8">
-                    {!! Form::text("encaissement",null,["class"=>"form-control".($errors->has('encaissement')?" is-invalid":""),"autofocus",'placeholder'=>'Exemple : 17, 10, 22, etc...']) !!}
-                    <span id="error-encaissement" class="invalid-feedback"></span>
+            <div class="form-group row">
+                <label class="col-form-label col-md-3 col-lg-2" for="validationTooltip03">Montant de l'offrande</label>
+                <div class="col-md-8 mb-3">
+                  <input type="text" class="form-control" id="validationTooltip03" placeholder="Exemple : 17, 10, 22, etc..." name="encaissement" required>
                 </div>
             </div>
-
     </div>
 
 

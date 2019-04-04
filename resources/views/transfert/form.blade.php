@@ -38,9 +38,8 @@
             <th scope="col"> <a>Surplus</a> </th>
             <th scope="col"> <a>Casuel</a> </th>
             <th scope="col"> <a>Intention</a> </th>
-            <th scope="col"> <a>Date souhaitée</a> </th>
-            <th scope="col"> <a>Date annoncée</a> </th>
-            <th scope="col"> <a>Date célébrée</a> </th>
+            <th scope="col"> <a>Annoncée le</a> </th>
+            <th scope="col"> <a>Célébre le</a> </th>
             <th scope="col"> <a>Célébrant</a> </th>
             <th scope="col"> <a>Clocher</a> </th>
             <th scope="col"> <a>Transférer l'intention</a> </th>
@@ -59,7 +58,6 @@
             <td> {{ $transfertCelebrant->surplus }} </td>
             <td> {{ $transfertCelebrant->casuel }} </td>
             <td> {{ $transfertCelebrant->intention }} </td>
-            <td> {{ ($transfertCelebrant->date_souhaitee ? date('d/m/Y', strtotime($transfertCelebrant->date_souhaitee)) : '') }} </td>
             <td> {{ ($transfertCelebrant->date_annoncee ? date('d/m/Y', strtotime($transfertCelebrant->date_annoncee)) : '') }} </td>
             <td> {{ ($transfertCelebrant->date_celebree ? date('d/m/Y', strtotime($transfertCelebrant->date_celebree)) : '') }} </td>
             @if(isset($transfertCelebrant->celebrants->nom))

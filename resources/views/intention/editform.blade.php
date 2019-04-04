@@ -11,36 +11,50 @@
         @endif
 
 
-    <div class="row">
-      <div class="col-md-4">
-          <select class="form-control required"  id="casuel" name="casuel">
-              <option selected value="">Choisir un type d'intention</option>
-              <option value="Intention"> Intention </option>
-              <option value="Mariage"> Mariage </option>
-              <option value="Mariage avec Messe"> Mariage avec Messe</option>
-              <option value="Funérailles"> Funérailles </option>
-              <option value="Funérailles avec Messe"> Funérailles avec Messe</option>
-          </select>
-          <span id="error-casuel" class="invalid-feedback"></span>
-      </div>
+        <div class="row">
+          <div class="col-md-4">
+              <select class="form-control" name="casuel" id="validationTooltip02" required>
+                  <option selected value="">Choisir un type d'intention</option>
+                  <option value="Intention"> Intention </option>
+                  <option value="Mariage"> Mariage </option>
+                  <option value="Mariage avec Messe"> Mariage avec Messe</option>
+                  <option value="Funérailles"> Funérailles </option>
+                  <option value="Funérailles avec Messe"> Funérailles avec Messe </option>
+              </select>
+              <span id="error-casuel" class="invalid-feedback"></span>
+          </div>
 
-
-      <div class="form-group row required">
-            {!! Form::label("intention","De / Pour",["class"=>"col-form-label col-md-3 col-lg-4"]) !!}
-            <div class="col-md-8">
-                {!! Form::text("intention",null,["class"=>"form-control".($errors->has('intention')?" is-invalid":""),"autofocus",'placeholder'=>'Intention souhaitée']) !!}
-                <span id="error-intention" class="invalid-feedback"></span>
-            </div>
+          <div class="form-group row required">
+              <label>  De / Pour</label>
+              <div class="col-md-8">
+                  {!! Form::text("intention",null,["class"=>"form-control".($errors->has('intention')?" is-invalid":""),"autofocus",'placeholder'=>'Personne bénéficiaire']) !!}
+                  <span id="error-intention" class="invalid-feedback"></span>
+              </div>
+          </div>
         </div>
-    </div>
-    <br>
+
 
     <div class="container">
-        <div class="form-group row required">
+        <!-- <div class="form-group row required">
             {!! Form::label("date_souhaitee","Date souhaitee",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
             <div class="col-md-8">
                 {!! Form::date("date_souhaitee",null,["class"=>"form-control".($errors->has('date_souhaitee')?" is-invalid":""),'placeholder'=>'Date souhaitee']) !!}
                 <span id="error-date_souhaitee" class="invalid-feedback"></span>
+            </div>
+        </div> -->
+        <div class="form-group row">
+            {!! Form::label("personne_demandeuse","Demandeur",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
+            <div class="col-md-8">
+                {!! Form::text("personne_demandeuse",null,["class"=>"form-control".($errors->has('personne_demandeuse')?" is-invalid":""),"autofocus",'placeholder'=>'Demandeur']) !!}
+                <span id="error-personne_demandeuse" class="invalid-feedback"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            {!! Form::label("commentaire","Commentaire",["class"=>"col-form col-md-3 col-lg-2"]) !!}
+            <div class="col-md-8">
+                {!! Form::textarea("commentaire",null,["class"=>"form-control", "rows"=>"2".($errors->has('commentaire')?" is-invalid":""),"autofocus",'placeholder'=>'Petite précision ? (255 caractères maximum)']) !!}
+                <span id="error-commentaire" class="invalid-feedback"></span>
             </div>
         </div>
 

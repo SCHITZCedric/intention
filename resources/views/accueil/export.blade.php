@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Default form register -->
-<form class="text-center border border-light p-5" action="{{ url('accueil/exporter/export')}}" method="POST">
+<form class="text-center border border-light p-5" action="{{ url('/exporter/export')}}" method="POST">
 @csrf
     <p class="h4 mb-4">Vous souhaitez exporter une ou plusieurs intention  au format Excel</p>
 
@@ -52,7 +52,7 @@
                     <select class="form-control" name="id_celebrants">
                         <option selected value="">Choisir un célébrant</option>
                         @foreach ($ListCelebrant as $celebrant)
-                          <option value="{{ $celebrant->id }}">{{ $celebrant->nom }} {{ $celebrant->prenom }}</option>
+                          <option value="{{ $celebrant->id_celebrant }}">{{ $celebrant->nom }} {{ $celebrant->prenom }}</option>
                         @endforeach
                     </select>
                 </div>

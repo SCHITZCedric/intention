@@ -177,10 +177,8 @@ class ParoisseController extends Controller
       $listeClocherChart = $clochers->where('id_paroisses', '=', $id_paroisse)
                                     ->get();
 
-      $calendar = Intention::where('date_annoncee', '!=', NULL)
-                  ->get();
 
-        return view('paroisse.statistiques', compact('stats', 'listeClocherChart', 'calendar',
+        return view('paroisse.statistiques', compact('stats', 'listeClocherChart',
                                                      'montantOffrandeMois', 'montantOffrandeAnnee',
                                                      'montantSurplusMois', 'montantSurplusAnnee',
                                                      'nombreAnnonceeMois', 'nombreAnnonceeAnnee',

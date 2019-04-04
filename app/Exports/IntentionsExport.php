@@ -31,7 +31,6 @@ class IntentionsExport implements FromView
                 $id_paroisse =  Auth::user()->id_paroisses;
 
                 if ($id_clochers != null) {
-
                     return view('export.index', [
                         'paroisse' => Intention::leftjoin('clochers', 'id_clochers', '=', 'clochers.id_clocher')
                                                 ->where('id_paroisses', '=', $id_paroisse)
@@ -48,6 +47,7 @@ class IntentionsExport implements FromView
                         'paroisse' => Intention::leftjoin('clochers', 'id_clochers', '=', 'clochers.id_clocher')
                                                 ->where('id_paroisses', '=', $id_paroisse)
                                                 ->where('id_celebrants', '=', $id_celebrants)
+                                                ->orderBy('date_annoncee')
                                                 ->get()
 
                     ]);

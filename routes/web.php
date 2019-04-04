@@ -27,9 +27,8 @@ Route::get('/statistiques', 'ParoisseController@stats');
 
 Route::get('/get-intention-chart-data', 'ChartDataController@getMonthlyIntentionData');
 Route::get('/get-clocher-chart-data', 'ChartDataController@getMonthlyClocherData');
-Route::get('/get-calendar-data', 'ChartDataController@getIntentionEventCalendar');
 
-Route::get('/test', 'ChartDataController@getIntentionEventCalendar');
+
 
 
 
@@ -53,16 +52,9 @@ Auth::routes();
 
   Route::match(['GET', 'POST'], '/ajouter-intention', 'IntentionController@create');
 
-  Route::group(['prefix' => 'recherche'], function(){
-    Route::get('/', function() { return view('accueil.recherche'); });
-    Route::match(['GET', 'POST'],'/resultat', 'RechercheController@filter');
-    Route::match(['GET', 'PUT'], '/resultat/update/{id}', 'IntentionController@update');
-
-  });
-
 Route::get('/exporter', function () { return view('accueil.export'); });
 // Route::post('/exporter/resultat', 'ExportController@export');
-Route::post('/exporter/resultat/export', 'IntentionController@export');
+Route::post('/exporter/export', 'IntentionController@export');
 
 
   Route::group(['prefix' => '/intentions'], function() {

@@ -406,24 +406,22 @@ setlocale(LC_TIME, 'fra_fra');
                       defaultDate: moment(),
                       height: 600,
                       navLinks: true, // can click day/week names to navigate views
-                      editable: true,
+
                       eventLimit: true, // allow "more" link when too many events
                 events : [
-                    @foreach($calendar as $task)
+                    @foreach($stats as $task)
                     {
                         title : '{{ $task->intention }}',
                         start : '{{ $task->date_annoncee }}',
-                        description : '{{ $task->casuel }}',
                     },
                     @endforeach
                 ],
                 eventColor: '#1c74bb',
-                eventTextColor: '#ffffff'
+                eventTextColor: '#ffffff',
             })
 
         });
     </script>
-
 </body>
 
 </html>
