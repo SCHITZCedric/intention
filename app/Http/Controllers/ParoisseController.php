@@ -14,16 +14,9 @@ class ParoisseController extends Controller
 
   public function index(Request $request)
   {
-    $request->session()->put('search', $request
-            ->has('search') ? $request->get('search') : ($request->session()
-            ->has('search') ? $request->session()->get('search') : ''));
-            //
-
 
     $paroisses = new Paroisse();
-          $paroisses = $paroisses->where('nom', 'like', '%' . $request->session()->get('search') . '%')
-                                 ->orWhere('lieu', 'like' , '%' . $request->session()->get('search') . '%')
-                                 ->orderBy('lieu')
+          $paroisses = $paroisses->orderBy('lieu')
                                  ->paginate(10);
 
           if ($request->ajax()) {

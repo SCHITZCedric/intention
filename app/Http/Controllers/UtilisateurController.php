@@ -11,22 +11,9 @@ class UtilisateurController extends Controller
 
   public function index(Request $request)
   {
-    $request->session()->put('search', $request
-            ->has('search') ? $request->get('search') : ($request->session()
-            ->has('search') ? $request->session()->get('search') : ''));
-
-             // $request->session()->put('field', $request
-             //        ->has('field') ? $request->get('field') : ($request->session()
-             //         ->has('field') ? $request->session()->get('field') : 'id'));
-
-
     $utilisateurs = new User();
-          $utilisateurs = $utilisateurs->where('email', 'like', '%' . $request->session()->get('search') . '%')
-                                        ->orWhere('nom', 'like' , '%' . $request->session()->get('search') . '%')
-                                        ->orWhere('prenom', 'like' , '%' . $request->session()->get('search') . '%')
-
-              ->orderBy('nom')
-              ->paginate(10);
+          $utilisateurs = $utilisateurs->orderBy('nom')
+                                       ->paginate(10);
 
           if ($request->ajax()) {
             return view('utilisateur.index', compact('utilisateurs'));

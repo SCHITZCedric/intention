@@ -13,30 +13,12 @@ class CelebrantController extends Controller
 
   public function index(Request $request)
   {
-    $request->session()->put('search', $request
-            ->has('search') ? $request->get('search') : ($request->session()
-            ->has('search') ? $request->session()->get('search') : ''));
-
-            $request->session()->put('field', $request
-                    ->has('field') ? $request->get('field') : ($request->session()
-                    ->has('field') ? $request->session()->get('field') : 'id'));
-
-                    $request->session()->put('sort', $request
-                            ->has('sort') ? $request->get('sort') : ($request->session()
-                            ->has('sort') ? $request->session()->get('sort') : 'asc'));
-
 
     $id_paroisse =  Auth::user()->id_paroisses;
 
     $celebrants = new Celebrant();
           $celebrants = $celebrants->where('id_paroisses', '=', $id_paroisse)
-                                   ->where('nom', 'like', '%' . $request->session()->get('search') . '%')
-
-                                   ->orWhere('id_paroisses', '=', $id_paroisse)
-                                   ->where('prenom', 'like', '%' . $request->session()->get('search') . '%')
-
-
-              ->paginate(10);
+                                   ->paginate(10);
 
           if ($request->ajax()) {
             return view('celebrant.index', compact('celebrants'));

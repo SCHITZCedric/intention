@@ -13,18 +13,9 @@ class ReglerController extends Controller
 
   public function index(Request $request)
   {
-    $request->session()->put('search', $request
-            ->has('search') ? $request->get('search') : ($request->session()
-            ->has('search') ? $request->session()->get('search') : ''));
 
     $reglers = new Celebrant();
           $reglers = $reglers->where('id_paroisses', '=', Auth::user()->id_paroisses)
-
-                             ->where('nom', 'like', '%' . $request->session()->get('search') . '%')
-
-                             ->orWhere('id_paroisses', '=', Auth::user()->id_paroisses)
-                             ->where('prenom', 'like', '%' . $request->session()->get('search') . '%')
-
                              ->orderBy('nom')
                              ->get();
 
