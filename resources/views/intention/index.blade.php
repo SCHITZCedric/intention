@@ -26,16 +26,35 @@
     </div>
     <br>
 </div>
+<div class="container">
+  <div>
+          <strong>Cocher les coches pour cacher les colonnes</strong><br/>
+          <input type="checkbox" class="hidecol" value="created_at" id="col_1" />&nbsp;Date d'ajout&nbsp;
+          <input type="checkbox" class="hidecol" value="reglement" id="col_2" />&nbsp;Reglement
+          <input type="checkbox" class="hidecol" value="encaissement" id="col_3" />&nbsp;Offrande
+          <input type="checkbox" class="hidecol" value="encaissement" id="col_4" />&nbsp;Surplus
+          <input type="checkbox" class="hidecol" value="surplus" id="col_5" />&nbsp;Casuel
+          <input type="checkbox" class="hidecol" value="casuel" id="col_6" />&nbsp;Demandeur
+          <input type="checkbox" class="hidecol" value="created_at" id="col_7" />&nbsp;Intention&nbsp;
+          <input type="checkbox" class="hidecol" value="reglement" id="col_8" />&nbsp;Annoncé le
+          <input type="checkbox" class="hidecol" value="encaissement" id="col_9" />&nbsp;Célébrée le
+          <input type="checkbox" class="hidecol" value="surplus" id="col_10" />&nbsp;Célébrant
+          <input type="checkbox" class="hidecol" value="casuel" id="col_11" />&nbsp;Clocher
+          <input type="checkbox" class="hidecol" value="surplus" id="col_12" />&nbsp;Commentaire
+          <input type="checkbox" class="hidecol" value="casuel" id="col_13" />&nbsp;Modifié le
+      </div>
+      </div>
+
 
 <div class="row">
 
   <div class="col">
     <div class="col-sm-9">
 
-    <table class="table table-hover">
+    <table class="table table-hover" id="emp_table">
         <thead>
             <br>
-        <tr>
+        <tr class="tr_header">
             <th scope="col">
                 <a href="javascript:ajaxLoad('{{url('intentions/?field=created_at&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Date d'ajout</a>
                 {{request()->session()->get('field')=='created_at'?(request()->session()->get('sort')=='asc'?'':''):''}}
