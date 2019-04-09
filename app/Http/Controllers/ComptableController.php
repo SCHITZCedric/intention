@@ -18,13 +18,6 @@ class ComptableController extends Controller
 {
   public function index(Request $request)
     {
-              $request->session()->put('field', $request
-                      ->has('field') ? $request->get('field') : ($request->session()
-                      ->has('field') ? $request->session()->get('field') : 'id'));
-
-                      $request->session()->put('sort', $request
-                              ->has('sort') ? $request->get('sort') : ($request->session()
-                              ->has('sort') ? $request->session()->get('sort') : 'asc'));
 
     $id_paroisse =  Auth::user()->id_paroisses;
 
@@ -34,7 +27,6 @@ class ComptableController extends Controller
       $paroisse = $intentions->leftjoin('clochers', 'id_clochers', '=', 'clochers.id_clocher')
                              ->where('id_paroisses', '=', $id_paroisse)
                              ->orWhere('paroisse_destination', '=', $id_paroisse)
-                             ->orderBy($request->session()->get('field'), $request->session()->get('sort'))
                              ->get();
 
 
@@ -50,11 +42,7 @@ class ComptableController extends Controller
                                                                                      ->sum('surplus');
 
 
-                if ($request->ajax()) {
                 return view('comptable.index', compact('surplusTotal', 'paroisse'));
-                  } else {
-                  return view('comptable.ajax', compact('surplusTotal', 'paroisse'));
-                }
     }
 
 

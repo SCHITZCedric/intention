@@ -26,10 +26,8 @@ Route::get('/date', function () {
 Route::get('/statistiques', 'ParoisseController@stats');
 
 Route::get('/get-intention-chart-data', 'ChartDataController@getMonthlyIntentionData');
+Route::get('/get-intention-past-chart-data', 'ChartDataController@getPastYearIntentionData');
 Route::get('/get-clocher-chart-data', 'ChartDataController@getMonthlyClocherData');
-
-
-
 
 
 
@@ -42,6 +40,12 @@ Route::group(['prefix' => 'profil-celebrant'], function() {
 
 Route::get('/comptable', 'ComptableController@index');
 Route::post('/comptable/exporter', 'ComptableController@export');
+
+
+  Route::get('comptable/payer', 'ReglerComptableController@index');
+  Route::get('comptable/payer/{id}', 'ReglerComptableController@regler');
+  Route::post('comptable/payer/{id}', 'ReglerComptableController@update');
+
 
 
 
@@ -130,4 +134,8 @@ Route::group(['prefix' => 'transfert'], function() {
   Route::get('/', 'TransfertController@index');
   Route::get('update/{id}', 'TransfertController@transfert');
   Route::post('update/{id}', 'TransfertController@update');
+});
+
+Route::group(['middleware' => 'roles'], function() {
+
 });

@@ -1,4 +1,9 @@
-
+<style>
+#div1{
+background-color:#00ff00;
+width:300px;
+}
+</style>
 <script src="{{ asset('/js/app.js') }}" defer></script>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
@@ -29,7 +34,7 @@
 <div class="container">
   <div>
           <strong>Cocher les coches pour cacher les colonnes</strong><br/>
-          <input type="checkbox" class="hidecol" value="created_at" id="col_1" />&nbsp;Date d'ajout&nbsp;
+          <input type="checkbox" class="hidecol" value="created_at" id="col_1">&nbsp;Date d'ajout&nbsp;
           <input type="checkbox" class="hidecol" value="reglement" id="col_2" />&nbsp;Reglement
           <input type="checkbox" class="hidecol" value="encaissement" id="col_3" />&nbsp;Offrande
           <input type="checkbox" class="hidecol" value="encaissement" id="col_4" />&nbsp;Surplus
@@ -58,7 +63,7 @@
             <th scope="col">
                 <a href="javascript:ajaxLoad('{{url('intentions/?field=created_at&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Date d'ajout</a>
                 {{request()->session()->get('field')=='created_at'?(request()->session()->get('sort')=='asc'?'':''):''}}
-            </th>
+        </th>
             <th scope="col">
                 <a href="javascript:ajaxLoad('{{url('intentions/?field=reglement&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Reglement</a>
                 {{request()->session()->get('field')=='reglement'?(request()->session()->get('sort')=='asc'?'':''):''}}
@@ -125,16 +130,22 @@
   <tbody id="Table">
 
 
-  <tr class="col">
+
   @foreach ($paroisse as $intention)
+  @if(isset($intention->date_celebree))
+  <tr class="col" style="background-color: rgba(0, 255, 94, 0.30);">
+  @else
+   <tr class="col" style="background-color: rgba(235, 115, 115, 0.30);">
+   @endif
+
            <td> {{ $intention->created_at }} </td>
            <td> {{ $intention->reglement }} </td>
            <td> {{ $intention->encaissement }} </td>
            <td> {{ $intention->surplus }} </td>
            <td> {{ $intention->casuel }} </td>
            <td> {{ $intention->personne_demandeuse }} </td>
-           <td> {{ $intention->intention }} </td>
-           <td> {{ ($intention->date_annoncee ? date('d/m/Y', strtotime($intention->date_annoncee)) : '') }} </td>
+           <td> {{ $intention->intention }} </span></td>
+           <td> {{ ($intention->date_annoncee ? date('d/m/Y', strtotime($intention->date_annoncee)) : '') }}</td>
            <td> {{ ($intention->date_celebree ? date('d/m/Y', strtotime($intention->date_celebree)) : '') }} </td>
            @if(isset($intention->celebrants->nom))
            <td> {{ $intention->celebrants->nom }} {{ $intention->celebrants->prenom }}</td>
@@ -142,10 +153,10 @@
            <td> Célébrant inconnu </td>
            @endif
            @if(isset($intention->clochers->nom))
-           <td class="col-md-5"> {{ $intention->clochers->nom }} </td>
+           <td> {{ $intention->clochers->nom }} </td>
            @else
            @if(isset($intention->paroisse_origine))
-           <td class="col-md-5">{{ $intention->paroisses->nom }}</td>
+           <td>{{ $intention->paroisses->nom }}</td>
            @endif
            @endif
            <td> {{ $intention->commentaire }} </td>

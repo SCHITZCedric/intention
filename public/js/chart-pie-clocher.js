@@ -29,6 +29,7 @@
 		 */
 		createCompletedJobsChart: function ( response ) {
 
+
       var ctx = document.getElementById("PieChartClocher");
       var myPieChart = new Chart(ctx, {
         type: 'doughnut',
@@ -36,9 +37,14 @@
           labels: response.clocher,
           datasets: [{
             data: response.clocher_count_data,
-            backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+            backgroundColor: ['#4e73df', '#1cc88a', '#b336cc', '#cc363b', '#f4691b', '#14fab5', '#100e66' ],
             hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
             hoverBorderColor: "rgba(234, 236, 244, 1)",
+          }, {
+            type: 'doughnut',
+            data: [5, 10, 5, 10],
+            backgroundColor: ['#4e73df', '#1cc88a', '#b336cc', '#cc363b', '#f4691b', '#14fab5', '#100e66' ],
+
           }],
         },
         options: {

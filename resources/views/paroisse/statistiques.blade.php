@@ -259,7 +259,7 @@ setlocale(LC_TIME, 'fra_fra');
               <div class="card border-left-info shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-info">Clochers utilisées en {{strftime('%B')}} {{date('Y')}}</h6>
+                  <h6 class="m-0 font-weight-bold text-info">Lieu de célébration en {{date('Y')}}</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -287,58 +287,6 @@ setlocale(LC_TIME, 'fra_fra');
               </div>
             </div>
           </div>
-
-
-
-
-  <div class="card mb-6">
-            <div class="card-header">
-              <i class="fas fa-table"></i>
-              Liste des intentions</div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Demandeur</th>
-                      <th>Type</th>
-                      <th>Intention souhaitée</th>
-                      <th>Clocher</th>
-                      <th>Date annoncée</th>
-                      <th>Date célébrée</th>
-                      <th>Statut</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach ($stats as $stat)
-                    <tr>
-                      <td>{{$stat->personne_demandeuse}}</td>
-                      <td>{{$stat->casuel}}</td>
-                      <td>{{$stat->intention}}</td>
-                      @if(isset($stat->clochers->nom))
-                      <td>{{ $stat->clochers->nom }} </td>
-                      @else
-                      <td> Clocher inconnu </td>
-                      @endif
-                      <td>{{ ($stat->date_annoncee? date('d/m/Y', strtotime($stat->date_annoncee)) : '') }}</td>
-                      <td>{{ ($stat->date_celebree ? date('d/m/Y', strtotime($stat->date_celebree)) : '') }}</td>
-                      @if(!empty($stat->date_celebree))
-                      <td><span class="badge badge-success">Célébrée</span></td>
-                      @else
-                      <td><span class="badge badge-warning">Annoncée</span></td>
-                      @endif
-                    </tr>
-                    @endforeach
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="card-footer small text-muted">Mis à jour à {{date('d-m-Y H:i:s')}}</div>
-          </div>
-
-
-
               </div>
             </div>
           </div>

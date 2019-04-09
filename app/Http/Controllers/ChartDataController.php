@@ -24,7 +24,7 @@ class ChartDataController extends Controller
             foreach ($intentions_dates as $date) {
                 $date = new DateTime($date->date);
                 $month_nbre = $date->format('m');
-                $month_name = $date->format('F');
+                $month_name = $date->format('M');
 
                 $month_array[$month_nbre] = $month_name;
             }
@@ -42,6 +42,19 @@ class ChartDataController extends Controller
                                         ->count();
 		return $monthly_intention_count;
 	}
+
+    function getPastYearIntentionCount( $month ) {
+        $anneeCourant = date("Y") - 1;
+        $id_paroisse =  Auth::user()->id_paroisses;
+        $past_year_intention_count = Intention::leftjoin('clochers', 'id_clochers', '=', 'clochers.id_clocher')
+                                        ->where('id_paroisses', '=', $id_paroisse)
+                                        ->whereMonth( 'date_celebree', $month)
+                                        ->whereYear( 'date_celebree', $anneeCourant)
+                                        ->get()
+                                        ->count();
+        return $past_year_intention_count;
+    }
+
 
     public function getMonthlyIntentionData()
     {
@@ -64,6 +77,29 @@ class ChartDataController extends Controller
         );
 
         return $monthly_intention_data_array;
+    }
+
+    public function getPastYearIntentionData()
+    {
+        $monthly_intention_count_array = array();
+        $month_array = $this->getAllMonths();
+        $month_name_array = array();
+        if (! empty($month_array)) {
+            foreach ($month_array as $month_no => $month_name) {
+                $past_year_intention_count = $this->getPastYearIntentionCount($month_no);
+                array_push($monthly_intention_count_array, $past_year_intention_count);
+                array_push($month_name_array, $month_name);
+            }
+        }
+        $max_no = max($monthly_intention_count_array);
+        $max = round(( $max_no + 10/2 ) / 10 ) * 10;
+        $past_intention_data_array = array(
+            'months_past' => $month_name_array,
+            'intention_count_data_past' => $monthly_intention_count_array,
+            'max_past' => $max,
+        );
+
+        return $past_intention_data_array;
     }
 
 
@@ -90,10 +126,10 @@ class ChartDataController extends Controller
 
     function getMonthlyClocherCount($clocher) {
         $id_paroisse =  Auth::user()->id_paroisses;
-        $moisCourant = date("n");
+        $anneeCourant = date("Y");
         $monthly_clocher_count = Intention::leftjoin('clochers', 'id_clochers', '=', 'clochers.id_clocher')
                                         ->where('id_paroisses', '=', $id_paroisse)
-                                        ->whereMonth( 'date_celebree', $moisCourant)
+                                        ->whereYear('date_celebree', $anneeCourant)
                                         ->where('id_clochers', '=', $clocher)
                                         ->get()
                                         ->count();
@@ -121,24 +157,4 @@ class ChartDataController extends Controller
 
         return $monthly_clocher_data_array;
     }
-
-    public function getIntentionEventCalendar()
-    {
-      $event_calendar_intention = Intention::where('date_annoncee', '!=', NULL)
-                                           ->get();
-
-        foreach ($event_calendar_intention as $value) {
-            $array_calendar[] = $value->toArray();
-        }
-
-
-      return $array_calendar;
-    }
-
-
-
-
-
-
-
 }
