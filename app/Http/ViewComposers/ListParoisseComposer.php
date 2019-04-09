@@ -9,7 +9,7 @@ class ListParoisseComposer {
 
   function compose(View $view)
   {
-    $id_paroisse = Auth::user()->id_paroisses;
+
 
     $view->with('ListParoisse', Paroisse::all()
 

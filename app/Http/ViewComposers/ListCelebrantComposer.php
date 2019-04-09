@@ -12,7 +12,7 @@ class ListCelebrantComposer
     $id_paroisse = Auth::user()->id_paroisses;
 
     $view->with('ListCelebrant', Celebrant::where('en_service', '!=', NULL)
-                                          ->where('id_paroisses', '=', $id_paroisse)
+                                          ->orderBy('id_paroisses', 'ASC')
                                           ->get()
 
   );

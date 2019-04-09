@@ -11,17 +11,7 @@
         <div class="col-sm-5">
           <div class="pull-right">
             <div class="input-group">
-                <input class="form-control mr-sm-2" id="search"
-                       value="{{ request()->session()->get('search') }}"
-                       onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('regler')}}?search='+this.value)"
-                       placeholder="Rechercher une personne" name="search"
-                       type="search"/>
-                <div class="input-group-btn">
-                    <button type="submit" class="btn btn-secondary"
-                            onclick="ajaxLoad('{{url('regler')}}?search='+$('#search').val())">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
+            <input class="form-control" id="search" type="text" placeholder="Rechercher...">
             </div>
           </div>
         </div>
@@ -41,7 +31,7 @@
         </tr>
         </thead>
 
-        <tbody>
+        <tbody id="Table">
         @foreach ($reglers as $regler)
           <tr>
             <td> {{ $regler->nom }} </td>
@@ -52,7 +42,7 @@
             <td> {{ $regler->statuts->statut }} </td>
             <td>
                 <div class="btn-group btn-group-sm" role="group">
-                <a class="btn btn-success" title="Regler" href="javascript:ajaxLoad('{{url('regler/update/'.$regler->id)}}')">Célébrer une intention à {{$regler->nom}} {{$regler->prenom}}</a>
+                <a class="btn btn-primary" title="Regler" href="javascript:ajaxLoad('{{url('regler/update/'.$regler->id_celebrant)}}')">Célébrer une intention à {{$regler->nom}} {{$regler->prenom}}</a>
                 </div>
             </td>
         </tr>
@@ -61,3 +51,5 @@
     </table>
 
 </div>
+
+  <script src="js/live-search.js"></script>

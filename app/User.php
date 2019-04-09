@@ -61,4 +61,22 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function isCelebrant()
+    {
+      if($this->id_roles == 4) {
+        return true;
+      }
+       return false;
+  }
+
+
+  public function isComptable()
+  {
+    if($this->id_roles == 3) {
+      return true;
+    }
+     return false;
+}
+
 }

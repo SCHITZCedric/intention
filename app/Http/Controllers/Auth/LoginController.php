@@ -30,8 +30,15 @@ class LoginController extends Controller
 
 public function redirectTo()
 {
-    $id_user =  Auth::user()->id_paroisses;
-    // return redirect('IntentionController@indexHM',$id_user);
+
+
+  if ($this->guard()->user()->isCelebrant()) {
+    return "/profil-celebrant";
+  }
+
+  if ($this->guard()->user()->isComptable()) {
+    return "/comptable";
+  }
     return "/accueil";
 }
 
@@ -44,4 +51,8 @@ public function redirectTo()
     {
         $this->middleware('guest')->except('logout');
     }
+
+
+
+
 }

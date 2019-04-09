@@ -13,17 +13,9 @@ class TransfertController extends Controller
 
   public function index(Request $request)
   {
-    $request->session()->put('search', $request
-            ->has('search') ? $request->get('search') : ($request->session()
-            ->has('search') ? $request->session()->get('search') : ''));
 
     $transfert = new Paroisse();
-          $transfert = $transfert->where('id', '!=', Auth::user()->id_paroisses)
-                                ->where('nom', 'like', '%' . $request->session()->get('search') . '%')
-
-
-                                ->orWhere('id', '!=', Auth::user()->id_paroisses)
-                                ->where('lieu', 'like', '%' . $request->session()->get('search') . '%')
+          $transfert = $transfert->where('id', '!=', Auth::user()->id_paroisses)                    
                                 ->get();
 
           if ($request->ajax()) {
@@ -71,12 +63,11 @@ class TransfertController extends Controller
 
     $intentionList = $transfertCelebrants->leftjoin('clochers', 'id_clochers', '=', 'clochers.id_clocher')
                                          ->where('date_celebree', '=', NULL)
-                                         ->where('id_clochers', '!=', NULL)
                                          ->where('id_paroisses', '=', $id_paroisse)
 
 
 
-                                      ->orderBy('created_at')
+                                      ->orderBy('created_at', 'ASC')
                                       ->get();
 
     return view('transfert.form', ['transfertCelebrants' => $intentionList ]);

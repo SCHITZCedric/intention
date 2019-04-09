@@ -12,15 +12,11 @@ class ClocherController extends Controller
 
   public function index(Request $request)
   {
-    $request->session()->put('search', $request
-            ->has('search') ? $request->get('search') : ($request->session()
-            ->has('search') ? $request->session()->get('search') : ''));
-            //
 
 $id_paroisse = Auth::user()->id_paroisses;
     $clochers = new Clocher();
           $clochers = $clochers->where('id_paroisses', '=', $id_paroisse)
-                                ->where('lieu', 'like', '%' . $request->session()->get('search') . '%')
+                                
 
               ->orderBy('lieu')
               ->paginate(10);

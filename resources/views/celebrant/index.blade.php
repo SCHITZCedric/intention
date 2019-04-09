@@ -1,5 +1,6 @@
 
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <div class="container">
     <div class="row">
         <div class="col-sm-7">
@@ -8,17 +9,7 @@
         <div class="col-sm-5">
           <div class="pull-right">
             <div class="input-group">
-                <input class="form-control mr-sm-2" id="search"
-                       value="{{ request()->session()->get('search') }}"
-                       onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('celebrants')}}?search='+this.value)"
-                       placeholder="Rechercher une personne" name="search"
-                       type="search"/>
-                <div class="input-group-btn">
-                    <button type="submit" class="btn btn-secondary"
-                            onclick="ajaxLoad('{{url('celebrants')}}?search='+$('#search').val())">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
+              <input class="form-control" id="search" type="text" placeholder="Rechercher...">
             </div>
           </div>
         </div>
@@ -76,14 +67,21 @@
         </tr>
         </thead>
 
-        <tbody>
+        <tbody id="Table">
         @foreach ($celebrants as $celebrant)
           <tr>
 
 
             <td> {{ $celebrant->nom }} </td>
             <td> {{ $celebrant->prenom }} </td>
-            <td> {{ $celebrant->en_service }} </td>
+            @if($celebrant->en_service == 1)
+            <td> <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="customCheck1" checked disabled>
+              <label class="custom-control-label" for="customCheck1" checked></label>
+                </div></td>
+            @else
+            <td> Inactif </td>
+            @endif
             <td> {{ $celebrant->compteur_messe }} </td>
             <td> {{ $celebrant->compteur_binage }} </td>
             <td> {{ $celebrant->paroisses->nom }} </td>
@@ -94,11 +92,11 @@
                 <div class="btn-group btn-group-sm" role="group">
 
                 <a class="btn btn-warning" title="Edit"
-                   href="javascript:ajaxLoad('{{url('celebrants/update/'.$celebrant->id)}}')">  <i class="fas fa-pencil-alt"></i>
+                   href="javascript:ajaxLoad('{{url('celebrants/update/'.$celebrant->id_celebrant)}}')">  <i class="fas fa-pencil-alt"></i>
                     Modifier</a>
                 <input type="hidden" name="_method" value="delete"/>
                 <a class="btn btn-danger" title="Delete" data-toggle="confirmation"
-                   href="javascript:if(confirm('Êtes-vous de vouloir supprimer cette personne?')) ajaxDelete('{{url('celebrants/delete/'.$celebrant->id)}}', '{{csrf_token()}}')"> <i class="fas fa-trash-alt"></i>
+                   href="javascript:if(confirm('Êtes-vous de vouloir supprimer cette personne?')) ajaxDelete('{{url('celebrants/delete/'.$celebrant->id_celebrant)}}', '{{csrf_token()}}')"> <i class="fas fa-trash-alt"></i>
                     Supprimer
                 </a>
 
@@ -112,3 +110,5 @@
             {{ $celebrants->links() }}
         </ul>
 </div>
+
+<script src="js/live-search.js"></script>

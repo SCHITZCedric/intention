@@ -1,27 +1,16 @@
 
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
 <div class="container">
     <div class="row">
         <div class="col-sm-7">
           <h3>Choisir une paroisse pour lui transférer des intentions</h3>
-
-
         </div>
         <div class="col-sm-5">
           <div class="pull-right">
             <div class="input-group">
-                <input class="form-control mr-sm-2" id="search"
-                       value="{{ request()->session()->get('search') }}"
-                       onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('transfert')}}?search='+this.value)"
-                       placeholder="Rechercher une paroisse" name="search"
-                       type="search"/>
-                <div class="input-group-btn">
-                    <button type="submit" class="btn btn-secondary"
-                            onclick="ajaxLoad('{{url('transfert')}}?search='+$('#search').val())">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
+              <input class="form-control" id="search" type="text" placeholder="Rechercher...">
             </div>
           </div>
         </div>
@@ -37,7 +26,7 @@
         </tr>
         </thead>
 
-        <tbody>
+        <tbody id="Table">
         @foreach ($transfert as $trans)
           <tr>
             <td> {{ $trans->nom }} </td>
@@ -45,7 +34,7 @@
 
             <td>
                 <div class="btn-group btn-group-sm" role="group">
-                <a class="btn btn-success" title="Transfert" href="javascript:ajaxLoad('{{url('transfert/update/'.$trans->id)}}')">Transférer une intention à la paroisse {{$trans->nom}}</a>
+                <a class="btn btn-primary" title="Transfert" href="javascript:ajaxLoad('{{url('transfert/update/'.$trans->id)}}')">Transférer une intention à la paroisse {{$trans->nom}}</a>
                 </div>
             </td>
         </tr>
@@ -54,3 +43,5 @@
     </table>
 
 </div>
+
+<script src="js/live-search.js"></script>

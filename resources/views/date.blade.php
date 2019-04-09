@@ -32,7 +32,11 @@ for($premier; $premier <= $j; $premier+=$pas) {
       $tableau[]= date("l", $premier);
 }
 $nbreDimanche = sizeof($tableau); // La taille du tableau est égale au nombre de dimanche dans le mois
-$compteurMesse = date("t", $nbreJourMois) - $nbreDimanche; // On calcul donc le nombre de Messe que peut effectuer un curé
+$compteurMesse = date("t", $nbreJourMois) - $nbreDimanche;
+$nbreDeJour = date("t", $nbreJourMois); // On calcul donc le nombre de Messe que peut effectuer un curé
 echo "Le compteur de messe est de " . $compteurMesse;
+
+echo "Le compteur de messe est de " . $nbreDeJour;
+
 
 ?>

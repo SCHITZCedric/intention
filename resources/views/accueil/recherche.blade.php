@@ -13,10 +13,10 @@
         <div class="col">
 
             <div class="form-group row">
-                {!! Form::label("date_annoncee","Annoncée le",["class"=>"col-form-label col-md-3 col-lg-4"]) !!}
+                {!! Form::label("date_celebree","Célébrée le",["class"=>"col-form-label col-md-3 col-lg-4"]) !!}
                 <div class="col-md-8">
 
-            <input class="form-control"  type="date" name="date_annoncee">
+            <input class="form-control"  type="date" name="date_celebree">
             </div>
         </div>
         </div>

@@ -13,7 +13,6 @@
     <title>Outil d'intention de Messe</title>
     @yield('head')
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -23,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
     @yield('css')
 </head>
     <!--Body-->
@@ -40,9 +40,7 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                            <div class="ml-auto">
-                                <h5>  <a class="nav-link row-left" href="{{ url('/regler') }}"> Régler une intention</a> </h5>
-                            </div>
+
                                 <li class="nav-item dropdown">
 
                                     <h5> <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -78,6 +76,32 @@
 </div>
         <main class="py-4">
             @yield('content')
+            <div class="footer-bottom">
+
+          	<div class="container">
+
+          		<div class="row">
+
+          			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+          				<div class="copyright">
+
+          					© 2019, GIE LES DEUX EVECHES, Tous droits réservés
+
+          				</div>
+
+          			</div>
+
+
+          		</div>
+
+          	</div>
+
+          </div>
+
+
+
+            @yield('footer')
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>

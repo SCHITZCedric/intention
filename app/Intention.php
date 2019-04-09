@@ -15,7 +15,7 @@ class Intention extends Model
  }
 
  public function celebrants() {
-   return $this->belongsTo('App\Celebrant', 'id_celebrants');
+   return $this->belongsTo('App\Celebrant', 'id_celebrants', 'id_celebrant');
  }
 
  public function paroisses() {

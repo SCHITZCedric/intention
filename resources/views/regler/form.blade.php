@@ -38,12 +38,11 @@
             <th scope="col"> <a>Surplus</a> </th>
             <th scope="col"> <a>Casuel</a> </th>
             <th scope="col"> <a>Intention</a> </th>
-            <th scope="col"> <a>Date souhaitée</a> </th>
-            <th scope="col"> <a>Date annoncée</a> </th>
-            <th scope="col"> <a>Date célébrée</a> </th>
+            <th scope="col"> <a>Annoncée le</a> </th>
+            <th scope="col"> <a>Célébrée le</a> </th>
             <th scope="col"> <a>Célébrant</a> </th>
             <th scope="col"> <a>Clocher</a> </th>
-            <th scope="col"> <a>Payer l'intention</a> </th>
+            <th scope="col"> <a>Reglement à recevoir</a> </th>
 
         </tr>
         </thead>
@@ -59,7 +58,6 @@
             <td> {{ $reglerCelebrant->surplus }} </td>
             <td> {{ $reglerCelebrant->casuel }} </td>
             <td> {{ $reglerCelebrant->intention }} </td>
-            <td> {{ ($reglerCelebrant->date_souhaitee ? date('d/m/Y', strtotime($reglerCelebrant->date_souhaitee)) : '') }} </td>
             <td> {{ ($reglerCelebrant->date_annoncee ? date('d/m/Y', strtotime($reglerCelebrant->date_annoncee)) : '') }} </td>
             <td> {{ ($reglerCelebrant->date_celebree ? date('d/m/Y', strtotime($reglerCelebrant->date_celebree)) : '') }} </td>
             @if(isset($reglerCelebrant->celebrants->nom))
