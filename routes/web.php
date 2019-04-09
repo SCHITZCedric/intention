@@ -29,16 +29,32 @@ Route::get('/get-intention-chart-data', 'ChartDataController@getMonthlyIntention
 Route::get('/get-intention-past-chart-data', 'ChartDataController@getPastYearIntentionData');
 Route::get('/get-clocher-chart-data', 'ChartDataController@getMonthlyClocherData');
 
+Route::get('/profil-celebrant', [
+  'uses' => 'ProfilController@index',
+  'middleware' => 'roles',
+  'roles' => ['Admin', 'Celebrant']
+  ]);
 
 
 Route::group(['prefix' => 'profil-celebrant'], function() {
-  Route::get('/', 'ProfilController@index');
+  // Route::get('/', 'ProfilController@index');
   Route::post('/', 'ProfilController@celebrer');
 });
 
 
+Route::get('celebrants/', [
+    'uses' => 'CelebrantController@index',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
 
-Route::get('/comptable', 'ComptableController@index');
+]);
+
+Route::get('/comptable', [
+  'uses' => 'ComptableController@index',
+  'middleware' => 'roles',
+  'roles' => ['Admin', 'Comptable']
+  ]);
+
 Route::post('/comptable/exporter', 'ComptableController@export');
 
 
@@ -62,7 +78,7 @@ Route::post('/exporter/export', 'IntentionController@export');
 
 
   Route::group(['prefix' => '/intentions'], function() {
-    Route::get('/', 'IntentionController@index');
+    // Route::get('/', 'IntentionController@index');
     Route::match(['get', 'post'], '/create', 'IntentionController@create');
     Route::match(['get', 'put'], '/update/{id}', 'IntentionController@update');
     // Route::post('{id_paroisse}/search', 'FilterController@filter');
@@ -74,6 +90,13 @@ Route::post('/exporter/export', 'IntentionController@export');
     Route::match(['get', 'put'], '/update/{id}', 'UtilisateurController@update');
     Route::delete('delete/{id}', 'UtilisateurController@destroy');
 });
+
+Route::get('intentions/', [
+    'uses' => 'IntentionController@index',
+    'middleware' => 'roles',
+    'roles' => ['Admin', 'Utilisateur']
+
+]);
 
 Route::get('utilisateurs/', [
     'uses' => 'UtilisateurController@index',
@@ -102,6 +125,8 @@ Route::get('paroisses/', [
     'roles' => ['Admin']
 
 ]);
+
+
 
 Route::group(['prefix' => 'celebrants'], function() {
 
