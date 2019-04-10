@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Paroisse extends Model
 {
   protected $fillable = [
-      'nom','lieu'
+      'nom','lieu', 'id_dioceses'
   ];
    public $timestamps = false;
 
@@ -25,6 +25,10 @@ class Paroisse extends Model
 
   public function users() {
     return $this->hasMany('App\User', 'id_paroisses');
+  }
+
+  public function dioceses() {
+    return $this->belongsTo('App\Diocese', 'id_dioceses');
   }
 
 

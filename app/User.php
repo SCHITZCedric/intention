@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'prenom','nom','email', 'password', 'id_roles', 'id_paroisses'
+        'prenom','nom','email', 'password', 'id_roles', 'id_paroisses', 'id_dioceses'
     ];
 
     public $timestamps=false;
@@ -36,6 +36,10 @@ class User extends Authenticatable
 
     public function roles() {
       return $this->belongsTo('App\Role', 'id_roles');
+    }
+
+    public function dioceses() {
+      return $this->belongsTo('App\Diocese', 'id_dioceses');
     }
 
     public function hasAnyRole($roles)

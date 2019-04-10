@@ -15,8 +15,9 @@ class TransfertController extends Controller
   {
 
     $transfert = new Paroisse();
-          $transfert = $transfert->where('id', '!=', Auth::user()->id_paroisses)                    
-                                ->get();
+          $transfert = $transfert->where('id', '!=', Auth::user()->id_paroisses)
+                                 ->where('id_dioceses', '=', Auth::user()->paroisses->id_dioceses)
+                                 ->get();
 
           if ($request->ajax()) {
             return view('transfert.index', compact('transfert'));

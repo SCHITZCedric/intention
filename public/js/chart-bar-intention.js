@@ -7,7 +7,6 @@
 			Chart.defaults.global.defaultFontColor = '#292b2c';
 
 			this.ajaxGetIntentionMonthlyData();
-      this.ajaxGetIntentionPastYearData();
 
 		},
 
@@ -24,19 +23,6 @@
 			});
 		},
 
-    ajaxGetIntentionPastYearData: function () {
-      var urlPath =  'http://' + window.location.hostname + '/intention/public/get-intention-past-chart-data';
-      var request_past = $.ajax( {
-        method: 'GET',
-        url: urlPath
-    } );
-
-      request_past.done( function ( response ) {
-        console.log( responsep );
-        charts.createCompletedJobsChart(response);
-      });
-    },
-
 		/**
 		 * Created the Completed Jobs Chart
 		 */
@@ -52,14 +38,6 @@
       hoverBackgroundColor: "#368dcc",
       borderColor: "#4e73df",
       data: response.intention_count_data,
-    }, {
-      label: "Intention en 2018",
-      data: response.intention_count_data_past,
-      color: "rgb(8, 84, 207)",
-      type: 'line',
-      fill: false,
-      borderColor: "rgb(33, 204, 163)",
-
     }],
         labels: response.months,
   },

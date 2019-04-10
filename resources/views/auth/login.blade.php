@@ -20,6 +20,7 @@
                <div class="card-body">
                   <form method="POST" action="{{ route('login') }}">
                            @csrf
+                           <a> <img class="img_login" src="./img/logodeoriom.png" alt="Logo du diocèse de Nancy/Toul"   width="200" height="110" style="position: centered;"> </a>
 
                      <div class="form-group row">
                         <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Adresse mail') }}</label>

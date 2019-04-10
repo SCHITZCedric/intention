@@ -31,7 +31,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                     <!--Logo diocèse cliquable barre de naviguation-->
-                <a href="{{ url('/accueil') }}"> <img class="navbar-brand" src="./img/logo_diocese.jpg" alt="Logo du diocèse de Nancy/Toul"   width="200" height="110"> </a>
+                <a href="{{ url('/accueil') }}"> <img class="navbar-brand" src="./img/logodeoriom.png" alt="Logo du diocèse de Nancy/Toul"   width="200" height="110"> </a>
                         <!-- Barre de naviguation-->
                     <ul class="navbar-nav ml-auto">
                         @guest

@@ -17,17 +17,29 @@ Route::group(['middleware' => 'web'], function() {
   });
 });
 
+Route::group(['middleware' => 'web'], function() {
+  Route::get('/register', function () {
+      return view('auth.register');
+  });
+});
+
 
 Route::get('/date', function () {
     return view('date');
 });
 
 
-Route::get('/statistiques', 'ParoisseController@stats');
-
 Route::get('/get-intention-chart-data', 'ChartDataController@getMonthlyIntentionData');
 Route::get('/get-intention-past-chart-data', 'ChartDataController@getPastYearIntentionData');
 Route::get('/get-clocher-chart-data', 'ChartDataController@getMonthlyClocherData');
+
+Auth::routes();
+
+Route::group(['middleware' => 'auth'], function(){
+
+Route::get('/statistiques', 'ParoisseController@stats');
+
+
 
 Route::get('/profil-celebrant', [
   'uses' => 'ProfilController@index',
@@ -64,8 +76,6 @@ Route::post('/comptable/exporter', 'ComptableController@export');
 
 
 
-
-Auth::routes();
 
 
   Route::get('/accueil', function () { return view('accueil.accueil'); });
@@ -163,4 +173,5 @@ Route::group(['prefix' => 'transfert'], function() {
 
 Route::group(['middleware' => 'roles'], function() {
 
+});
 });

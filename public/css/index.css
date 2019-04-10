@@ -30,3 +30,11 @@ background-color: rgb(255, 255, 255) !important;
 .card-header h3{
 color: black;
 }
+
+.img_login {
+  position: absolute;
+  top: 0%;
+  left: 5%;
+transform: translate(-50%, -50%);
+  font-size: 18px;
+}

@@ -39,10 +39,6 @@ class IntentionController extends Controller
                              ->orderBy($request->session()->get('field'), $request->session()->get('sort'))
                              ->get();
 
-
-
-
-
                               $first = $clochers->select('id_clocher')
                                                 ->where('id_paroisses', '=', $id_paroisse)
                                                 ->get();

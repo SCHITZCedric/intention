@@ -50,6 +50,7 @@ width:300px;
       </div>
       </div>
 
+<div class="container">
 
 <div class="row">
 
@@ -127,6 +128,7 @@ width:300px;
 
   </div>
 
+</div>
   <tbody id="Table">
 
 

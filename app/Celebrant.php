@@ -9,7 +9,7 @@ class Celebrant extends Model
 
 public $primaryKey = 'id_celebrant';
   //protected $table = 'celebrants';
- protected $fillable = ['nom','prenom','en_service', 'compteur_messe', 'compteur_binage', 'id_paroisses', 'id_statuts'];
+ protected $fillable = ['nom','prenom','en_service', 'compteur_messe', 'compteur_binage', 'id_paroisses', 'id_statuts', 'id_dioceses'];
 
  public $timestamps = false;
 
@@ -24,6 +24,10 @@ public $primaryKey = 'id_celebrant';
 
  public function statuts() {
    return $this->belongsTo('App\Statut', 'id_statuts');
+ }
+
+ public function dioceses() {
+   return $this->belongsTo('App\Diocese', 'id_dioceses', 'id_celebrant');
  }
 
 }

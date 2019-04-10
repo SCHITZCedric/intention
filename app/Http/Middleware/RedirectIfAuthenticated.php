@@ -19,10 +19,8 @@ class RedirectIfAuthenticated
     {
         if (Auth::guard($guard)->check()) {
 
-            $id_user =  Auth::user()->id_paroisses;
-            // return redirect('IntentionController@indexHM',$id_user);
             return "/accueil";
-        }
+        } 
 
         return $next($request);
     }
