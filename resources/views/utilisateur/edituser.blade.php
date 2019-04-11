@@ -38,7 +38,7 @@
                 <select class="form-control" name="id_paroisses">
                   <option selected>Choisir une paroisse</option>
                     @foreach ($ListParoisse as $paroisse)
-                      <option value="{{ $paroisse->id }}">{{ $paroisse->lieu }} - {{ $paroisse->nom }}</option>
+                      <option value="{{ $paroisse->id }}">{{ $paroisse->lieu_paroisse }} - {{ $paroisse->nom_paroisse }}</option>
                     @endforeach
                 </select>
             </div>

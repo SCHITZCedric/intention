@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/get-intention-chart-data', 'ChartDataController@getMonthlyIntentionData');
+Route::get('/get-clocher-chart-data', 'ChartDataController@getMonthlyClocherData');
 
 Route::group(['middleware' => 'web'], function() {
   Route::get('/', function () {
@@ -23,15 +25,16 @@ Route::group(['middleware' => 'web'], function() {
   });
 });
 
+Route::get('comptable/payer', 'ReglerComptableController@index');
+Route::get('comptable/payer/{id}', 'ReglerComptableController@regler');
+Route::post('comptable/payer/{id}', 'ReglerComptableController@update');
 
 Route::get('/date', function () {
     return view('date');
 });
 
 
-Route::get('/get-intention-chart-data', 'ChartDataController@getMonthlyIntentionData');
-Route::get('/get-intention-past-chart-data', 'ChartDataController@getPastYearIntentionData');
-Route::get('/get-clocher-chart-data', 'ChartDataController@getMonthlyClocherData');
+
 
 Auth::routes();
 
@@ -68,15 +71,6 @@ Route::get('/comptable', [
   ]);
 
 Route::post('/comptable/exporter', 'ComptableController@export');
-
-
-  Route::get('comptable/payer', 'ReglerComptableController@index');
-  Route::get('comptable/payer/{id}', 'ReglerComptableController@regler');
-  Route::post('comptable/payer/{id}', 'ReglerComptableController@update');
-
-
-
-
 
   Route::get('/accueil', function () { return view('accueil.accueil'); });
 
@@ -165,13 +159,11 @@ Route::group(['prefix' => 'regler'], function() {
   Route::post('update/{id}', 'ReglerController@update');
 });
 
+
 Route::group(['prefix' => 'transfert'], function() {
   Route::get('/', 'TransfertController@index');
   Route::get('update/{id}', 'TransfertController@transfert');
   Route::post('update/{id}', 'TransfertController@update');
 });
 
-Route::group(['middleware' => 'roles'], function() {
-
-});
 });

@@ -84,7 +84,7 @@
             @endif
             <td> {{ $celebrant->compteur_messe }} </td>
             <td> {{ $celebrant->compteur_binage }} </td>
-            <td> {{ $celebrant->paroisses->nom }} </td>
+            <td> {{ $celebrant->paroisses->nom_paroisse }} </td>
             <td> {{ $celebrant->statuts->statut }} </td>
 
 

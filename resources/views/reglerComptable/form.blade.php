@@ -1,4 +1,3 @@
-
 <script src="{{ asset('js/app.js') }}" defer></script>
 <script src="{{ asset('js/checked.js') }}"></script>
 
@@ -89,11 +88,6 @@
            <button type="submit" class="btn btn-primary btn-xs" onclick="return confirm('Êtes-vous sûr de vouloir régler le(s) intention(s) séléctionnée(s) ?');">Sauvegarder</button>
 
         </div>
-
-
-
-
-
 
     </div>
       {!! Form::close() !!}

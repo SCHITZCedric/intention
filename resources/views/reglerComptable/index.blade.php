@@ -63,7 +63,7 @@ setlocale(LC_TIME, 'fra_fra');
             <td> {{ $regler->prenom }} </td>
             <td> {{ $regler->compteur_messe }} </td>
             <td> {{ $regler->compteur_binage }} </td>
-            <td> {{ $regler->paroisses->nom }} </td>
+            <td> {{ $regler->paroisses->nom_paroisse }} </td>
             <td> {{ $regler->statuts->statut }} </td>
             <td>
                 <div class="btn-group btn-group-sm" role="group">

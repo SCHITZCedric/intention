@@ -1,4 +1,3 @@
-
 <script src="{{ asset('js/app.js') }}" defer></script>
 <script src="{{ asset('js/checked.js') }}"></script>
 
@@ -83,17 +82,12 @@
     <div class="form-group row">
         <div class="col-md-3 col-lg-2"></div>
         <div class="col-md-4">
-            <a href="{{url('regler')}}" class="btn btn-danger btn-xs"> Retour</a>
+            <a href="{{url('/regler')}}" class="btn btn-danger btn-xs"> Retour</a>
 
            <!-- {!! Form::submit("Sauvegarder",["type" => "submit","class"=>"btn btn-primary btn-xs"] )!!} -->
-           <button type="submit" class="btn btn-primary btn-xs" onclick="return confirm('Êtes-vous sûr de vouloir célébrer le(s) intention(s) séléctionnée(s) ?');">Sauvegarder</button>
+           <button type="submit" class="btn btn-primary btn-xs" onclick="return confirm('Êtes-vous sûr de vouloir régler le(s) intention(s) séléctionnée(s) ?');">Sauvegarder</button>
 
         </div>
-
-
-
-
-
 
     </div>
       {!! Form::close() !!}

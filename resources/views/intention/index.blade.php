@@ -158,7 +158,7 @@ width:300px;
            <td> {{ $intention->clochers->nom }} </td>
            @else
            @if(isset($intention->paroisse_origine))
-           <td>{{ $intention->paroisses->nom }}</td>
+           <td>{{ $intention->paroisses->nom_paroisse }}</td>
            @endif
            @endif
            <td> {{ $intention->commentaire }} </td>

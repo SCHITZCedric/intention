@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Celebrant;
 use App\Intention;
@@ -10,36 +8,29 @@ use Illuminate\Support\Facades\Auth;
 
 class ReglerController extends Controller
 {
-
   public function index(Request $request)
   {
-
     $reglers = new Celebrant();
           $reglers = $reglers->where('id_paroisses', '=', Auth::user()->id_paroisses)
                              ->orderBy('nom')
                              ->get();
-
           if ($request->ajax()) {
             return view('regler.index', compact('reglers'));
           } else {
             return view('regler.ajax', compact('reglers'));
           }
   }
-
   public function update(Request $request, $id)
   {
-
       $rules = [
         'payee' => '',
       ];
-
       $validator = Validator::make($request->all(), $rules);
       if ($validator->fails())
       return response()->json([
         'fail' =>true,
         'errors' => $validator->errors()
       ]);
-
       $celebrant = new Celebrant();
       $array = ($request->payee); // On récupère la valeur de la checkbox qui est l'id de l'intention que l'on souhaite update
       $sizeArray = sizeof($array);
@@ -47,35 +38,28 @@ class ReglerController extends Controller
 
       while ($sizeArray > 0) {
           $compteur_messe_null = $celebrant->select('compteur_messe')
-                                            ->where('id', '=', $id)
+                                            ->where('id_celebrant', '=', $id)
                                             ->first();
-
             if ($compteur_messe_null->compteur_messe == 0) {
-
               Celebrant::find($id)->increment('compteur_binage');
-
             } else  {
               Celebrant::find($id)->decrement('compteur_messe');
             }
-
           $sizeArray--;
-
       }
+
       $regler->update([
         'date_celebree' => date("y-m-d"),
         'id_celebrants' => $id,
     ]);
-
       return response()->json([
         'fail' => false,
         'redirect_url' => url('regler')
       ]);
   }
-
   public function regler($id)
   {
     $reglerCelebrants = new Intention();
-
     $intentionList = $reglerCelebrants->where('id_celebrants', '=', $id)
                                       ->where('date_celebree', '=', NULL)
                                       ->where('id_clochers', '!=', NULL)
@@ -86,10 +70,6 @@ class ReglerController extends Controller
 
                                       ->orderBy('created_at')
                                       ->get();
-
     return view('regler.form', ['reglerCelebrants' => $intentionList ]);
-
   }
-
-
 }

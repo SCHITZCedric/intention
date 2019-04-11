@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Paroisse extends Model
 {
   protected $fillable = [
-      'nom','lieu', 'id_dioceses'
+      'nom_paroisse','lieu_paroisse', 'id_dioceses'
   ];
    public $timestamps = false;
 

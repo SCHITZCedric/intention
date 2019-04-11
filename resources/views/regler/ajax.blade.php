@@ -14,7 +14,6 @@
           z-index: 2000;
           display: none;
       }
-
       .form-group.required label:after {
           content: "*";
           color: red;
@@ -27,14 +26,15 @@
   <div id="content">
     @include('regler.index')
   </div>
+  <div class="loading">
+    <i class="fas fa-spinner fa-spin fa-2x fa-tw"></i>
+    <br>
+  <span>Chargement</span>
 </div>
-<div class="loading">
-  <i class="fas fa-spinner fa-spin fa-2x fa-tw"></i>
-  <br>
-<span>Chargement</span>
-</div>
+
 @endsection
 
 @section('js')
-  <script src="{{ asset('js/ajax.js') }}"></script>
+  <script src="{{ asset('/js/ajax.js') }}"></script>
+
 @endsection

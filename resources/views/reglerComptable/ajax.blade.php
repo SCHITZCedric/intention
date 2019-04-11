@@ -14,7 +14,6 @@
           z-index: 2000;
           display: none;
       }
-
       .form-group.required label:after {
           content: "*";
           color: red;

@@ -62,7 +62,7 @@
             <td> {{ $utilisateur->nom }} </td>
             <td> {{ $utilisateur->prenom }} </td>
             <td> {{ $utilisateur->email }} </td>
-            <td> {{ $utilisateur->paroisses->lieu }} - {{ $utilisateur->paroisses->nom }} </td>
+            <td> {{ $utilisateur->paroisses->lieu_paroisse }} - {{ $utilisateur->paroisses->nom_paroisse }} </td>
             <td> {{ $utilisateur->roles->role }} </td>
 
 

@@ -23,13 +23,13 @@
 
 
             <th scope="col">
-                <a href="javascript:ajaxLoad('{{url('paroisses?field=nom&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Nom</a>
-                {{request()->session()->get('field')=='nom'?(request()->session()->get('sort')=='asc'?'':''):''}}
+                <a href="javascript:ajaxLoad('{{url('paroisses?field=nom_paroisse&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Nom</a>
+                {{request()->session()->get('field')=='nom_paroisse'?(request()->session()->get('sort')=='asc'?'':''):''}}
             </th>
 
             <th scope="col">
-                <a href="javascript:ajaxLoad('{{url('paroisses?field=lieu&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Lieu</a>
-                {{request()->session()->get('field')=='lieu'?(request()->session()->get('sort')=='asc'?'':''):''}}
+                <a href="javascript:ajaxLoad('{{url('paroisses?field=lieu_paroisse&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Lieu</a>
+                {{request()->session()->get('field')=='lieu_paroisse'?(request()->session()->get('sort')=='asc'?'':''):''}}
             </th>
 
             <th width="160px" style="vertical-align: middle">
@@ -45,8 +45,8 @@
           <tr>
 
 
-            <td> {{ $paroisse->nom }} </td>
-            <td> {{ $paroisse->lieu }} </td>
+            <td> {{ $paroisse->nom_paroisse }} </td>
+            <td> {{ $paroisse->lieu_paroisse }} </td>
 
 
             <td>

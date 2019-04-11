@@ -184,7 +184,7 @@ setlocale(LC_TIME, 'fra_fra');
            <td> {{ $intention->clochers->nom }} </td>
            @else
            @if(isset($intention->paroisse_origine))
-           <td>{{ $intention->paroisses->nom }}</td>
+           <td>{{ $intention->paroisses->nom_paroisse }}</td>
            @endif
            @endif
 

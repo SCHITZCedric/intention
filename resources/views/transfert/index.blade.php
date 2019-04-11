@@ -29,8 +29,8 @@
         <tbody id="Table">
         @foreach ($transfert as $trans)
           <tr>
-            <td> {{ $trans->nom }} </td>
-            <td> {{ $trans->lieu }} </td>
+            <td> {{ $trans->nom_paroisse }} </td>
+            <td> {{ $trans->lieu_paroisse }} </td>
 
             <td>
                 <div class="btn-group btn-group-sm" role="group">

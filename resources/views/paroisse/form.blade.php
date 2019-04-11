@@ -9,18 +9,18 @@
             {!! Form::open(['id'=>'frm']) !!}
         @endif
         <div class="form-group row required">
-            {!! Form::label("nom","Nom",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
+            {!! Form::label("nom_paroisse","Nom",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
             <div class="col-md-8">
-                {!! Form::text("nom",null,["class"=>"form-control".($errors->has('nom')?" is-invalid":""),"autofocus",'placeholder'=>'Nom']) !!}
-                <span id="error-nom" class="invalid-feedback"></span>
+                {!! Form::text("nom_paroisse",null,["class"=>"form-control".($errors->has('nom_paroisse')?" is-invalid":""),"autofocus",'placeholder'=>'Nom']) !!}
+                <span id="error-nom_paroisse" class="invalid-feedback"></span>
             </div>
         </div>
 
         <div class="form-group row required">
-            {!! Form::label("lieu","Lieu",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
+            {!! Form::label("lieu_paroisse","Lieu",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
             <div class="col-md-8">
-                {!! Form::text("lieu",null,["class"=>"form-control".($errors->has('lieu')?" is-invalid":""),"autofocus",'placeholder'=>'Lieu']) !!}
-                <span id="error-lieu" class="invalid-feedback"></span>
+                {!! Form::text("lieu_paroisse",null,["class"=>"form-control".($errors->has('lieu_paroisse')?" is-invalid":""),"autofocus",'placeholder'=>'Lieu']) !!}
+                <span id="error-lieu_paroisse" class="invalid-feedback"></span>
             </div>
         </div>
 

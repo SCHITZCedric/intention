@@ -16,7 +16,7 @@ class ParoisseController extends Controller
   {
 
     $paroisses = new Paroisse();
-          $paroisses = $paroisses->orderBy('lieu')
+          $paroisses = $paroisses->orderBy('lieu_paroisse')
                                  ->paginate(10);
 
           if ($request->ajax()) {
@@ -32,8 +32,8 @@ class ParoisseController extends Controller
       return view('paroisse.form');
 
       $rules = [
-        'nom' => 'required',
-        'lieu' => 'required',
+        'nom_paroisse' => 'required',
+        'lieu_paroisse' => 'required',
 
       ];
 
@@ -45,8 +45,8 @@ class ParoisseController extends Controller
       ]);
 
       $paroisse = new Paroisse();
-      $paroisse->nom = $request->nom;
-      $paroisse->lieu = $request->lieu;
+      $paroisse->nom_paroisse = $request->nom_paroisse;
+      $paroisse->lieu_paroisse = $request->lieu_paroisse;
 
 
 
@@ -64,8 +64,8 @@ class ParoisseController extends Controller
       return view('paroisse.form', ['paroisse' => paroisse::find($id)]);
 
       $rules = [
-        'nom' => 'required',
-        'lieu' => 'required',
+        'nom_paroisse' => 'required',
+        'lieu_paroisse' => 'required',
 
       ];
 
@@ -77,8 +77,8 @@ class ParoisseController extends Controller
       ]);
 
       $paroisse = Paroisse::find($id);
-      $paroisse->nom = $request->nom;
-      $paroisse->lieu = $request->lieu;
+      $paroisse->nom_paroisse = $request->nom_paroisse;
+      $paroisse->lieu_paroisse = $request->lieu_paroisse;
 
 
 
