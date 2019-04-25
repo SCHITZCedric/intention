@@ -50,6 +50,7 @@ class UtilisateurController extends Controller
       $utilisateur->password = bcrypt($request->password);
       $utilisateur->id_paroisses = $request->id_paroisses;
       $utilisateur->id_roles = $request->id_roles;
+      $utilisateur->id_celebrant = $request->id_celebrant;
 
 
       $utilisateur->save();
@@ -86,6 +87,7 @@ class UtilisateurController extends Controller
       $utilisateur->email = $request->email;
       $utilisateur->id_paroisses = $request->id_paroisses;
       $utilisateur->id_roles = $request->id_roles;
+      $utilisateur->id_celebrant = $request->id_celebrant;
 
 
       $utilisateur->save();

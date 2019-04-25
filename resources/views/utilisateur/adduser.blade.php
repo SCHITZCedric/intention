@@ -49,16 +49,16 @@
             </div>
 
             <div class="form-group row required">
-                {!! Form::label("id_paroisses","Paroisse",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
-                <div class="col-md-8">
-                    <select class="form-control" name="id_paroisses">
-                      <option selected>Choisir une paroisse</option>
-                        @foreach ($ListParoisse as $paroisse)
-                          <option value="{{ $paroisse->id }}">{{ $paroisse->lieu }} - {{ $paroisse->nom }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
+              {!! Form::label("id_paroisses","Paroisse",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
+              <div class="col-md-8">
+                  <select class="form-control" name="id_paroisses">
+                    <option selected>Choisir une paroisse</option>
+                      @foreach ($ListParoisse as $paroisse)
+                        <option value="{{ $paroisse->id }}">{{ $paroisse->lieu_paroisse }} - {{ $paroisse->nom_paroisse }}</option>
+                      @endforeach
+                  </select>
+              </div>
+          </div>
 
             <div class="form-group row required">
                   {!! Form::label("id_roles","Statut",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
@@ -71,6 +71,19 @@
                       </select>
                   </div>
               </div>
+
+
+                      <div class="form-group row required">
+                          {!! Form::label("id_celebrant","Id du célébrant",["class"=>"col-form-label col-md-3 col-lg-2"]) !!}
+                          <div class="col-md-8">
+                              <select class="form-control" name="id_celebrant">
+                                <option selected>Choisir un célébrant</option>
+                                  @foreach ($ListCelebrant as $celebrant)
+                                    <option value="{{ $celebrant->id_celebrant }}">{{ $celebrant->nom }} {{ $celebrant->prenom }}</option>
+                                  @endforeach
+                              </select>
+                          </div>
+                      </div>
 
 
         <div class="form-group row">

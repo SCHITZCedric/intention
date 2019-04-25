@@ -12,8 +12,9 @@ class ListClocherComposer
   {
     $id_paroisse = Auth::user()->id_paroisses;
 
-    $view->with('ListClocher', Clocher::leftjoin('paroisses', 'id_paroisses', '=', 'paroisses.id')                                      
-                                      ->where('id_dioceses', '=', Auth::user()->paroisses->id_dioceses)
+    $view->with('ListClocher', Clocher::leftjoin('paroisses', 'id_paroisses', '=', 'paroisses.id')
+                                      ->where('id_paroisses', '=', Auth::user()->id_paroisses)
+                                      ->orderBy('nom')
                                       ->get()
 
     );

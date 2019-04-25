@@ -56,6 +56,25 @@
     </div>
     <br>
 
+    <div class="row">
+        <div class="form-group row required">
+              {!! Form::label("iteration","Itération",["class"=>"col-form-label col-md-3 col-lg-4"]) !!}
+              <div class="col-md-8">
+                  {!! Form::text("iteration",null,["class"=>"form-control".($errors->has('iteration')?" is-invalid":""),"autofocus",'placeholder'=>'Itération souhaitée']) !!}
+                  <span id="error-iteration" class="invalid-feedback"></span>
+              </div>
+          </div>
+
+
+      <div class="form-group row required">
+            {!! Form::label("frequence","Fréquence",["class"=>"col-form-label col-md-3 col-lg-4"]) !!}
+            <div class="col-md-8">
+                {!! Form::text("frequence",null,["class"=>"form-control".($errors->has('frequence')?" is-invalid":""),"autofocus",'placeholder'=>'Fréquence souhaitée']) !!}
+                <span id="error-frequence" class="invalid-feedback"></span>
+            </div>
+        </div>
+    </div>
+
 
 
 

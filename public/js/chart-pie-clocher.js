@@ -12,7 +12,7 @@
 		},
 
 		ajaxGetClocherMonthlyData: function () {
-			var urlPath =  'http://' + window.location.hostname + '/intention/public/get-clocher-chart-data';
+			var urlPath =  'http://' + window.location.hostname + '/deoriom/public/get-clocher-chart-data';
 			var request = $.ajax( {
 				method: 'GET',
 				url: urlPath
@@ -40,11 +40,6 @@
             backgroundColor: ['#4e73df', '#1cc88a', '#b336cc', '#cc363b', '#f4691b', '#14fab5', '#100e66' ],
             hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
             hoverBorderColor: "rgba(234, 236, 244, 1)",
-          }, {
-            type: 'doughnut',
-            data: [5, 10, 5, 10],
-            backgroundColor: ['#4e73df', '#1cc88a', '#b336cc', '#cc363b', '#f4691b', '#14fab5', '#100e66' ],
-
           }],
         },
         options: {
@@ -60,10 +55,10 @@
             caretPadding: 10,
           },
           legend: {
-            display: true,
+            display: false,
             position: 'bottom'
           },
-          cutoutPercentage: 80,
+          cutoutPercentage: 70,
         },
       });
 		}

@@ -11,7 +11,8 @@ class ListParoisseComposer {
   {
 
 
-    $view->with('ListParoisse', Paroisse::all()
+    $view->with('ListParoisse', Paroisse::orderBy('lieu_paroisse')
+                                        ->get()
 
 
     );

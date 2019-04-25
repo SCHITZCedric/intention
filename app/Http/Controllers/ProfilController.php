@@ -18,7 +18,7 @@ class ProfilController extends Controller
 {
     public function index()
     {
-      $id_user = Auth::user()->id;
+      $id_user = Auth::user()->id_celebrant;
       $moisCourant = date("n");
       $anneeCourant = date("Y");
 

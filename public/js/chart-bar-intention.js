@@ -11,7 +11,7 @@
 		},
 
 		ajaxGetIntentionMonthlyData: function () {
-			var urlPath =  'http://' + window.location.hostname + '/intention/public/get-intention-chart-data';
+			var urlPath =  'http://' + window.location.hostname + '/deoriom/public/get-intention-chart-data';
 			var request = $.ajax( {
 				method: 'GET',
 				url: urlPath

@@ -34,7 +34,7 @@ class IntentionController extends Controller
     $intentions = new Intention();
 
       $paroisse = $intentions->leftjoin('clochers', 'id_clochers', '=', 'clochers.id_clocher')
-                             ->where('id_paroisses', '=', $id_paroisse)
+                             ->where('id_paroisses', '=', Auth::user()->id_paroisses)
                              ->orWhere('paroisse_destination', '=', $id_paroisse)
                              ->orderBy($request->session()->get('field'), $request->session()->get('sort'))
                              ->get();
